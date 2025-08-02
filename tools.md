@@ -45,6 +45,11 @@ Add external package
     cargo add random
 ```
 
+Install a Rust binary
+```bash
+    cargo install diesel_cli --no-default-features --features sqlite
+```
+
 
 Other
 ```bash
