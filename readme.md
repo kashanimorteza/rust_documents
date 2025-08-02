@@ -1,6 +1,6 @@
 <!--------------------------------------------------------------------------------- Description -->
 # Rust
-    this is example of rust
+    this is documents of rust
 
 
 
