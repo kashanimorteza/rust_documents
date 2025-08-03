@@ -62,7 +62,23 @@ IDE
     rustdoc
     rustfmt
 
+<!--------------------------------------------------------------------------------- Concept -->
+<br><br>
 
+## Concept
+
+    Unwinding
+    Rust walks back up the stack and cleans up the data from each function it encounters
+    
+
+## 111
+    Unwinding
+
+    Rust walks back up the stack and cleans up the data from each function it encounters
+
+## 111
+    Unwinding
+    Rust walks back up the stack and cleans up the data from each function it encounters
 
 <!--------------------------------------------------------------------------------- Base -->
 <br><br>
@@ -72,7 +88,7 @@ IDE
     Bit | Byte | Store integer, char, string on memory
     Stack And Heap | Garbage collection
     Scop | Prelude
-
+    macro
 
 
 <!--------------------------------------------------------------------------------- Type -->
@@ -203,8 +219,14 @@ Compound
 <br><br>
 
 ## Error
-    .unwrap()
-    enum Result
+    panic
+    abort & unwind
+    Option & unwrap
+    Result
+    Multiple error types
+    Iterating over Results
+
+
 
 
 
@@ -224,6 +246,7 @@ Compound
     Lint Control
     Macro-related
     Crate-level
+
 
 
 <!--------------------------------------------------------------------------------- Extra -->
