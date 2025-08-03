@@ -387,11 +387,43 @@ Example 10
 
 ## Declar
 
-Install with cargo  
+Install with cargo
+```bash
+cargo add dotenvy
+```
 
-    cargo add dotenvy
+Install with Cargo.toml
+```rust
+[dependencies]
+dotenvy = "0.15"
+```
 
-Install with Cargo.toml :
+Add variable
+```bash
+echo DATABASE_URL=sqlite.db > .env
+echo API_KEY=abc123 >> .env
+echo PORT=8080 >> .env
+```
 
-    [dependencies]
-    dotenvy = "0.15"
+Read variable
+```rust
+use std::env;
+use dotenvy::dotenv;
+
+fn main() 
+{
+    // Load .env file into std::env
+    dotenv().ok();
+
+    let db_url = env::var("DATABASE_URL").expect("DATABASE_URL must be set");
+    let api_key = env::var("API_KEY").unwrap_or_else(|_| "default_key".to_string());
+    let port: u16 = env::var("PORT")
+        .unwrap_or_else(|_| "8000".to_string())
+        .parse()
+        .expect("PORT must be a valid number");
+
+    println!("DB: {}", db_url);
+    println!("API KEY: {}", api_key);
+    println!("PORT: {}", port);
+}
+```
