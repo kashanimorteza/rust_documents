@@ -3,29 +3,6 @@
     List        : io | round
 
 
-<!--------------------------------------------------------------------------------- Workspace -->
-<br><br>
-
-## Workspace
-
-
-
-<!--------------------------------------------------------------------------------- Package -->
-<br><br>
-
-## Package
-    A package is a bundle of one or more crates that provides a set of functionality
-    A package contains a Cargo.toml file that describes how to build those crates
-    Cargo is actually a package that contains the binary crate for the command line tool you’ve been using to build your code
-
-
-
-<!--------------------------------------------------------------------------------- Module -->
-<br><br>
-
-## Module
-
-
 
 <!--------------------------------------------------------------------------------- Crate -->
 <br><br>
@@ -41,14 +18,35 @@
     Library crates don’t have a main function, and they don’t compile to an executable. Instead, they define functionality intended to be shared with multiple projects
 
 
+<!--------------------------------------------------------------------------------- Module -->
+<br><br>
+
+## Module
 
 
 
+<!--------------------------------------------------------------------------------- Package -->
+<br><br>
 
-<!--------------------------------------------------------------------------------- Release -->
+## Package
+    A package is a bundle of one or more crates that provides a set of functionality
+    A package contains a Cargo.toml file that describes how to build those crates
+    Cargo is actually a package that contains the binary crate for the command line tool you’ve been using to build your code
+
+
+
+<!--------------------------------------------------------------------------------- Workspace -->
+<br><br>
+
+## Workspace
+
+
+
+<!--------------------------------------------------------------------------------- Paths -->
 <br><br>
 
 ## Paths
+
 ### absolute
 ```rust
     crate::front_of_house::hosting::add_to_waitlist();
@@ -59,18 +57,59 @@
     front_of_house::hosting::add_to_waitlist();
 ```
 
-### pub
+### mod
 ```rust
+//src/main.rs
+mod util;
+
+fn main() 
+{
+    util::fn_util();
+}
+
+//src/util.rs
+pub fn fn_util() 
+{
+    println!("fn_util");
+}
 ```
 
-### supper
+### pub mod
 ```rust
+//src/main.rs
+pub mod util;
+pub mod tools;
+
+fn main() 
+{
+    util::fn_util();
+}
+
+//src/util.rs
+pub fn fn_util() 
+{
+    crate::tools::fn_tools();
+}
+
+//src/tools.rs
+pub fn fn_tools() 
+{
+    println!("fn_tools");
+}
 ```
 
 ### use
 ```rust
 use std::io;
 use std::io::{self, Write};
+```
+
+### pub
+```rust
+```
+
+### supper
+```rust
 ```
 
 ### pub use

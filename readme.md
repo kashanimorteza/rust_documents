@@ -14,6 +14,7 @@
     Document   : https://docs.rs/
     Online IDE : https://play.rust-lang.org/
     Book       : https://rustbook.drunkleen.com/title-page.html
+    Examples   : https://doc.rust-lang.org/rust-by-example/
     Video      : @drunkleen    : https://www.youtube.com/watch?v=4SE-7UM0Ny8&list=PLEQkjob0yvF-Zai14ERqrTB-lAelqTJfm
     Video      : @MrAlihoseiny : https://www.youtube.com/watch?v=oNJxb6Vfu_I&list=PLprJq5MbyJebie1Xps1Cap82gkId9EIuU
     WebLog     : https://blog.alihoseiny.ir/category/%d8%a2%d9%85%d9%88%d8%b2%d8%b4-%d8%b2%d8%a8%d8%a7%d9%86-%d8%a8%d8%b1%d9%86%d8%a7%d9%85%d9%87%e2%80%8c%d9%86%d9%88%db%8c%d8%b3%db%8c-rust/

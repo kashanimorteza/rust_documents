@@ -33,6 +33,7 @@ cargo --version
 Create a package as a binary
 ```bash
     cargo new my_project_1 
+    cargo new my_project_1 --bin
 ```
 
 Create a package as a library
