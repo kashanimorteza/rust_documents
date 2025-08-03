@@ -11,10 +11,12 @@
     A crate is the smallest amount of code that the Rust compiler considers at a time
     A crate can come in one of two forms: a binary crate or a library crate
 
-### Binary
+Binary
+
     Each must have a function called main that defines what happens when the executable runs
 
-### Library
+Library
+
     Library crates don’t have a main function, and they don’t compile to an executable. Instead, they define functionality intended to be shared with multiple projects
 
 
@@ -58,6 +60,10 @@
 ```
 
 ### mod
+    dar 2 halat compiler be code ha negah mikone
+    1 - cargo.toml > dependencies
+    2 - behesh begi hamchin file vojood darad mesle > mod util;
+
 ```rust
 //src/main.rs
 mod util;
@@ -74,7 +80,6 @@ pub fn fn_util()
 }
 ```
 
-### pub mod
 ```rust
 //src/main.rs
 pub mod util;
