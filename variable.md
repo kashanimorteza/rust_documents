@@ -379,3 +379,19 @@ Example 9
 Example 10
 ```rust
 ```
+
+
+
+<!--------------------------------------------------------------------------------- Declar -->
+<br><br>
+
+## Declar
+
+Install with cargo  
+
+    cargo add dotenvy
+
+Install with Cargo.toml :
+
+    [dependencies]
+    dotenvy = "0.15"
