@@ -118,8 +118,8 @@ mod module_1
 ## Paths
 Absolute
 
-    crate:: when referencing modules from the top level, especially across files.
-    self:: for local submodules or internal structure within a file.
+    crate:: When referencing modules from the top level, especially across files.
+    self::  For local submodules or internal structure within a file.
 
 ```rust
 // src/main.rs
