@@ -64,7 +64,7 @@ pub fn fn_1()
 }
 ```
 
-Grouping Related Code in Modules
+Grouping : Inline
 ```rust
 // src/main.rs
 fn main() 
@@ -93,6 +93,81 @@ mod module_1
 }
 ```
 
+Grouping : File-based
+```rust
+// src/main.rs
+mod util;
+fn main() 
+{
+    util::module_1::a::fn_1();
+    util::module_1::b::fn_1();
+    util::module_2::a::fn_1();
+    util::module_2::b::fn_1();
+}
+
+// src/util/mod.rs
+pub mod module_1;
+pub mod module_2;
+
+// src/module_1/a.rs
+pub fn fn_1() 
+{
+    println!("a");
+}
+
+// src/module_1/b.rs
+pub fn fn_1() 
+{
+    println!("b");
+}
+
+// src/module_1/mod.rs
+pub mod a;
+pub mod b;
+
+// src/module_2/a.rs
+pub fn fn_1() 
+{
+    println!("a");
+}
+
+// src/module_2/b.rs
+pub fn fn_1() 
+{
+    println!("b");
+}
+
+// src/module_2/mod.rs
+pub mod a;
+pub mod b;
+```
+
+Super
+```rust
+// src/util/mod.rs
+mod util;
+
+fn main() 
+{
+    util::math::call_parent();
+}
+
+// src/util/mod.rs
+pub mod math;
+
+pub fn shared_fn() 
+{
+    println!("Called from shared_fn in utils");
+}
+
+// src/util/math.rs
+pub fn call_parent() 
+{
+    // `super` refers to utils module (mod.rs)
+    super::shared_fn();
+}
+```
+
 
 
 <!--------------------------------------------------------------------------------- Package -->
@@ -116,8 +191,8 @@ mod module_1
 <br><br>
 
 ## Paths
-Absolute
 
+### Absolute
     crate:: When referencing modules from the top level, especially across files.
     self::  For local submodules or internal structure within a file.
 
@@ -138,7 +213,9 @@ pub fn fn_util()
 }
 ```
 
-Relative
+
+
+### Relative
 ```rust
 // src/main.rs
 mod util;
@@ -156,47 +233,24 @@ pub fn fn_util()
 ```
 
 
+### pub
+    Baraye public kardan estefade mishe 
 
-<!--------------------------------------------------------------------------------- Other -->
-<br><br>
+    pub mod mudule_1 : 
+        az in khat be bad dige compiler dar kole proje emkane negah be in file ro dare
+        agar pub nadashte bashe compiler faghat hamon mahdodeii ke in khat hast be on file negah mikone
 
-## Other
+    pub use std::io :
+        az in ja be bad dige access hast dar kole proje
+        agar pub nadashte bashe faghat dar hamon mahdode access hast
+
+
 
 ### use
 ```rust
 use std::io;
 use std::io::{self, Write};
-```
-
-### pub
-```rust
-```
-
-### supper
-```rust
-```
-
-### pub use
-```rust
-```
-
-### glob
-```rust
+use std::{cmp::Ordering, io};
 use std::collections::*;
-```
-
-### as
-```rust
-
-```
-
-### external Packages
-```rust
-use rand::Rng;
-
-fn main() 
-{
-    let rand_number = rand::rng().random_range(1..=999);
-    println!("rand_number: {}", rand_number);
-}
+pub use std::io;
 ```
