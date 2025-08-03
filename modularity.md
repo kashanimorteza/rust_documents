@@ -64,8 +64,11 @@ Library
     1 - cargo.toml > dependencies
     2 - behesh begi hamchin file vojood darad mesle > mod util;
 
+    mod util : faghat dar hamon file ghabele didan hast
+    pub mod util : to kole file ha va project ghabele didan hast
+
 ```rust
-//src/main.rs
+// src/main.rs
 mod util;
 
 fn main() 
@@ -73,7 +76,7 @@ fn main()
     util::fn_util();
 }
 
-//src/util.rs
+// src/util.rs
 pub fn fn_util() 
 {
     println!("fn_util");
@@ -81,7 +84,7 @@ pub fn fn_util()
 ```
 
 ```rust
-//src/main.rs
+// src/main.rs
 pub mod util;
 pub mod tools;
 
@@ -90,13 +93,13 @@ fn main()
     util::fn_util();
 }
 
-//src/util.rs
+// src/util.rs
 pub fn fn_util() 
 {
     crate::tools::fn_tools();
 }
 
-//src/tools.rs
+// src/tools.rs
 pub fn fn_tools() 
 {
     println!("fn_tools");
