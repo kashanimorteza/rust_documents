@@ -51,18 +51,42 @@ Library
 
 ### absolute
 ```rust
-    crate::front_of_house::hosting::add_to_waitlist();
+// src/main.rs
+mod util;
+
+fn main() 
+{
+    util::fn_util();
+}
+
+// src/util.rs
+pub fn fn_util() 
+{
+    println!("fn_util");
+}
 ```
 
 ### relative
 ```rust
-    front_of_house::hosting::add_to_waitlist();
+// src/main.rs
+mod util;
+
+fn main() 
+{
+    util::fn_util();
+}
+
+// src/util.rs
+pub fn fn_util() 
+{
+    println!("fn_util");
+}
 ```
 
 ### mod
-    dar 2 halat compiler be code ha negah mikone
-    1 - cargo.toml > dependencies
-    2 - behesh begi hamchin file vojood darad mesle > mod util;
+    dar 2 halat compiler be code ha negah mikone va az vojodeshon bakhabar mishe:
+        1 - cargo.toml > dependencies
+        2 - behesh begi hamchin file vojood darad mesle > mod util;
 
     mod util : faghat dar hamon file ghabele didan hast
     pub mod util : to kole file ha va project ghabele didan hast
