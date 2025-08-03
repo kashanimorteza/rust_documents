@@ -56,7 +56,7 @@ mod util;
 
 fn main() 
 {
-    util::fn_util();
+    crate:util::fn_util();
 }
 
 // src/util.rs
