@@ -24,49 +24,71 @@ Library
 <br><br>
 
 ## Module
-### mod
     dar 2 halat compiler be code ha negah mikone va az vojodeshon bakhabar mishe:
-        1 - cargo.toml > dependencies
-        2 - behesh begi hamchin file vojood darad mesle > mod util;
+        1 - agar inja bashe : cargo.toml > dependencies
+        2 - behesh begi hamchin file vojood darad mesle :  mod module_1;
 
-mod util : faghat dar hamon file ghabele didan hast
+Inline
 ```rust
 // src/main.rs
-mod util;
-
 fn main() 
 {
-    util::fn_util();
+    module_1::fn_1();
 }
 
-// src/util.rs
-pub fn fn_util() 
+mod module_1
 {
-    println!("fn_util");
+    pub fn fn_1() 
+    {
+        println!("fn_1");
+    }
 }
 ```
 
-pub mod util : to kole file ha va project ghabele didan hast
+File-based
 ```rust
 // src/main.rs
-mod util;
-pub mod tools;
+mod module_1;
+use module_1::fn_1;
 
 fn main() 
 {
-    util::fn_util();
+    fn_1();
 }
 
-// src/util.rs
-pub fn fn_util() 
+// src/module_1.rs
+pub fn fn_1() 
 {
-    crate::tools::fn_tools();
+    println!("fn_1");
+}
+```
+
+Grouping Related Code in Modules
+```rust
+// src/main.rs
+fn main() 
+{
+    module_1::module_a::fn_a();
+    module_1::module_b::fn_b();
 }
 
-// src/tools.rs
-pub fn fn_tools() 
+mod module_1
 {
-    println!("fn_tools");
+    pub mod module_a
+    {
+        pub fn fn_a() 
+        {
+            println!("fn_a");
+        }
+    }
+
+    pub mod module_b
+    {
+        pub fn fn_b() 
+        {
+            println!("fn_b");
+        }
+    }
 }
 ```
 
