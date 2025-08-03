@@ -116,10 +116,11 @@ mod module_1
 <br><br>
 
 ## Paths
-
 Absolute
+
     crate:: when referencing modules from the top level, especially across files.
     self:: for local submodules or internal structure within a file.
+
 ```rust
 // src/main.rs
 mod util;
