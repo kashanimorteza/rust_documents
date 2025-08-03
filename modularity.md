@@ -24,6 +24,51 @@ Library
 <br><br>
 
 ## Module
+### mod
+    dar 2 halat compiler be code ha negah mikone va az vojodeshon bakhabar mishe:
+        1 - cargo.toml > dependencies
+        2 - behesh begi hamchin file vojood darad mesle > mod util;
+
+mod util : faghat dar hamon file ghabele didan hast
+```rust
+// src/main.rs
+mod util;
+
+fn main() 
+{
+    util::fn_util();
+}
+
+// src/util.rs
+pub fn fn_util() 
+{
+    println!("fn_util");
+}
+```
+
+pub mod util : to kole file ha va project ghabele didan hast
+```rust
+// src/main.rs
+mod util;
+pub mod tools;
+
+fn main() 
+{
+    util::fn_util();
+}
+
+// src/util.rs
+pub fn fn_util() 
+{
+    crate::tools::fn_tools();
+}
+
+// src/tools.rs
+pub fn fn_tools() 
+{
+    println!("fn_tools");
+}
+```
 
 
 
@@ -49,14 +94,17 @@ Library
 
 ## Paths
 
-### absolute
+Absolute
+    crate:: when referencing modules from the top level, especially across files.
+    self:: for local submodules or internal structure within a file.
 ```rust
 // src/main.rs
 mod util;
 
 fn main() 
 {
-    crate:util::fn_util();
+    crate::util::fn_util();
+    self::util::fn_util();
 }
 
 // src/util.rs
@@ -66,31 +114,7 @@ pub fn fn_util()
 }
 ```
 
-### relative
-```rust
-// src/main.rs
-mod util;
-
-fn main() 
-{
-    util::fn_util();
-}
-
-// src/util.rs
-pub fn fn_util() 
-{
-    println!("fn_util");
-}
-```
-
-### mod
-    dar 2 halat compiler be code ha negah mikone va az vojodeshon bakhabar mishe:
-        1 - cargo.toml > dependencies
-        2 - behesh begi hamchin file vojood darad mesle > mod util;
-
-    mod util : faghat dar hamon file ghabele didan hast
-    pub mod util : to kole file ha va project ghabele didan hast
-
+Relative
 ```rust
 // src/main.rs
 mod util;
@@ -107,28 +131,12 @@ pub fn fn_util()
 }
 ```
 
-```rust
-// src/main.rs
-pub mod util;
-pub mod tools;
 
-fn main() 
-{
-    util::fn_util();
-}
 
-// src/util.rs
-pub fn fn_util() 
-{
-    crate::tools::fn_tools();
-}
+<!--------------------------------------------------------------------------------- Other -->
+<br><br>
 
-// src/tools.rs
-pub fn fn_tools() 
-{
-    println!("fn_tools");
-}
-```
+## Other
 
 ### use
 ```rust
