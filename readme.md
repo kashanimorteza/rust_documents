@@ -66,17 +66,6 @@ IDE
 <br><br>
 
 ## Concept
-
-    Unwinding
-    Rust walks back up the stack and cleans up the data from each function it encounters
-    
-
-## 111
-    Unwinding
-
-    Rust walks back up the stack and cleans up the data from each function it encounters
-
-## 111
     Unwinding
     Rust walks back up the stack and cleans up the data from each function it encounters
 
