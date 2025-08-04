@@ -10,8 +10,7 @@
 
 <!---------------------------------------- Structure -->
 ### Structure
-    migrations folder
-        sql of create and drop tables
+    migrations, model, schema 
 
 <!---------------------------------------- Install -->
 ### Install  
