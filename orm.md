@@ -3,30 +3,39 @@
 
 
 
-<!--------------------------------------------------------------------------------- aaaa -->
+<!--------------------------------------------------------------------------------- diesel -->
 <br><br>
 
-## Install  
+## diesel
+
+<!---------------------------------------- Structure -->
+### Structure
+    migrations folder
+        sql of create and drop tables
+
+<!---------------------------------------- Install -->
+### Install  
     cargo add diesel
     cargo add dotenvy
     cargo install diesel_cli --no-default-features --features "sqlite postgres"
 
-
-
-<!--------------------------------------------------------------------------------- Setup -->
-<br><br>
-
-## Setup
+<!---------------------------------------- Setup -->
+### Setup
     diesel setup
     diesel migration generate post
+    diesel migration generate users
     diesel migration run
 
+<!---------------------------------------- Connection -->
 
-
-<!--------------------------------------------------------------------------------- Connection -->
-<br><br>
-
-## Connection 
+### Connection 
     echo DATABASE_SQLITE_URL=sample.db > .env 
     echo DATABASE_PGSQL_URL=postgres://raspberrypi_api:morteza123456@127.0.0.1/raspberrypi_api >> .env
     echo DATABASE_URL=sample.db >> .env 
+
+
+
+<!--------------------------------------------------------------------------------- SeaORM -->
+<br><br>
+
+## SeaORM  
