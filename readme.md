@@ -217,8 +217,9 @@ Compound
 
 ## Error
     panic
-    abort & unwind
-    Option & unwrap
+    abort
+    unwrap
+    expect
     Result
     Multiple error types
     Iterating over Results
