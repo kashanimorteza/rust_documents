@@ -398,7 +398,7 @@ Install with Cargo.toml
 dotenvy = "0.15"
 ```
 
-Add
+Add variables
 ```bash
 echo DATABASE_SQLITE_URL=sample.db > .env 
 echo DATABASE_PGSQL_URL=postgres://raspberrypi_api:123456@127.0.0.1/raspberrypi_api >> .env
