@@ -398,10 +398,11 @@ Install with Cargo.toml
 dotenvy = "0.15"
 ```
 
-Add variable
+Add
 ```bash
-echo DATABASE_URL=sqlite.db > .env
-echo API_KEY=abc123 >> .env
+echo DATABASE_SQLITE_URL=sample.db > .env 
+echo DATABASE_PGSQL_URL=postgres://raspberrypi_api:123456@127.0.0.1/raspberrypi_api >> .env
+echo DATABASE_URL=sample.db >> .env 
 echo PORT=8080 >> .env
 ```
 
