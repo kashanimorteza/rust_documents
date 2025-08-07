@@ -37,15 +37,19 @@
 
 ## Setup
 ```rust
+
 ```
 
 ```rust
+
 ```
 
 ```rust
+
 ```
 
 ```rust
+
 ```
 
 
@@ -172,4 +176,182 @@ fn main()
 
     handle.join().unwrap();
 }
+```
+
+
+
+<!--------------------------------------------------------------------------------- Channel -->
+<br><br>
+
+## Channel
+    Using Message Passing to Transfer Data Between Threads
+    Do not communicate by sharing memory; instead, share memory by communicating
+
+    Channel : 
+        A channel is a general programming concept by which data is sent from one thread to another
+        A channel has two halves: a transmitter and a receiver
+
+```rust
+use std::sync::mpsc;
+
+fn main() 
+{
+    let (tx, rx) = mpsc::channel();
+}
+```
+
+```rust
+use std::sync::mpsc;
+use std::thread;
+
+fn main() 
+{
+    let (tx, rx) = mpsc::channel();
+
+    thread::spawn(move || 
+    {
+        let val = String::from("hi");
+        tx.send(val).unwrap();
+    });
+}
+```
+
+```rust
+use std::sync::mpsc;
+use std::thread;
+
+fn main() 
+{
+    let (tx, rx) = mpsc::channel();
+
+    thread::spawn(move || {
+        let val = String::from("hi");
+        tx.send(val).unwrap();
+    });
+
+    let received = rx.recv().unwrap();
+    println!("Got: {received}");
+}
+```
+
+Channels and Ownership Transference
+```rust
+use std::sync::mpsc;
+use std::thread;
+
+fn main() 
+{
+    let (tx, rx) = mpsc::channel();
+
+    thread::spawn(move || {
+        let val = String::from("hi");
+        tx.send(val).unwrap();
+        println!("val is {val}");
+    });
+
+    let received = rx.recv().unwrap();
+    println!("Got: {received}");
+}
+```
+
+Sending Multiple Values and Seeing the Receiver Waiting
+```rust
+use std::sync::mpsc;
+use std::thread;
+use std::time::Duration;
+
+fn main() 
+{
+    let (tx, rx) = mpsc::channel();
+
+    thread::spawn(move || {
+        let vals = vec![
+            String::from("hi"),
+            String::from("from"),
+            String::from("the"),
+            String::from("thread"),
+        ];
+
+        for val in vals 
+        {
+            tx.send(val).unwrap();
+            thread::sleep(Duration::from_secs(1));
+        }
+    });
+
+    for received in rx 
+    {
+        println!("Got: {received}");
+    }
+}
+```
+
+Creating Multiple Producers by Cloning the Transmitter
+```rust
+use std::sync::mpsc;
+use std::thread;
+use std::time::Duration;
+
+fn main() 
+{
+    // --snip--
+
+    let (tx, rx) = mpsc::channel();
+
+    let tx1 = tx.clone();
+    thread::spawn(move || {
+        let vals = vec![
+            String::from("hi"),
+            String::from("from"),
+            String::from("the"),
+            String::from("thread"),
+        ];
+
+        for val in vals 
+        {
+            tx1.send(val).unwrap();
+            thread::sleep(Duration::from_secs(1));
+        }
+    });
+
+    thread::spawn(move || {
+        let vals = vec![
+            String::from("more"),
+            String::from("messages"),
+            String::from("for"),
+            String::from("you"),
+        ];
+
+        for val in vals 
+        {
+            tx.send(val).unwrap();
+            thread::sleep(Duration::from_secs(1));
+        }
+    });
+
+    for received in rx 
+    {
+        println!("Got: {received}");
+    }
+
+    // --snip--
+}
+```
+
+
+
+<!--------------------------------------------------------------------------------- Shared-State -->
+<br><br>
+
+## Shared-State
+```rust
+
+```
+
+```rust
+
+```
+
+```rust
+
 ```

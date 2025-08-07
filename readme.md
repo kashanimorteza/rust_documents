@@ -211,6 +211,15 @@ Compound
 <br><br>
 
 ## Concurrency
+    Race conditions | Deadlocks
+    Process
+    Threads
+    Spawn
+    Move
+    Channel
+    Shared-State
+
+
 
 
 
