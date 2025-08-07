@@ -219,9 +219,14 @@ Compound
     Channel
     Shared-State
     Mutex
+
+
+
+<!--------------------------------------------------------------------------------- Asynchronous -->
+<br><br>
+
+## Asynchronous
     Futures
-
-
 
 
 
