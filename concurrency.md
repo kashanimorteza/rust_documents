@@ -190,6 +190,7 @@ fn main()
     Channel : 
         A channel is a general programming concept by which data is sent from one thread to another
         A channel has two halves: a transmitter and a receiver
+        In a way, channels in any programming language are similar to single ownership, because once you transfer a value down a channel, you should no longer use that value
 
 ```rust
 use std::sync::mpsc;
@@ -344,10 +345,126 @@ fn main()
 <br><br>
 
 ## Shared-State
-```rust
+    Using Mutexes to Allow Access to Data from One Thread at a Time
+    mutex allows only one thread to access some data at any given time
+    You must attempt to acquire the lock before using the data.
+    When you’re done with the data that the mutex guards, you must unlock the data so other threads can acquire the lock.
+    
+    
 
+The API of Mutex<T>
+```rust
+use std::sync::Mutex;
+
+fn main() 
+{
+    let m = Mutex::new(5);
+
+    {
+        let mut num = m.lock().unwrap();
+        *num = 6;
+    }
+
+    println!("m = {m:?}");
+}
 ```
 
+Sharing a Mutex<T> Between Multiple Threads
+```rust
+//Rust is telling us that we can’t move the ownership of lock counter into multiple threads
+
+use std::sync::Mutex;
+use std::thread;
+
+fn main() 
+{
+    let counter = Mutex::new(0);
+    let mut handles = vec![];
+
+    for _ in 0..10 {
+        let handle = thread::spawn(move || {
+            let mut num = counter.lock().unwrap();
+
+            *num += 1;
+        });
+        handles.push(handle);
+    }
+
+    for handle in handles 
+    {
+        handle.join().unwrap();
+    }
+
+    println!("Result: {}", *counter.lock().unwrap());
+}
+```
+
+Multiple Ownership with Multiple Threads
+```rust
+use std::rc::Rc;
+use std::sync::Mutex;
+use std::thread;
+
+fn main() 
+{
+    let counter = Rc::new(Mutex::new(0));
+    let mut handles = vec![];
+
+    for _ in 0..10 {
+        let counter = Rc::clone(&counter);
+        let handle = thread::spawn(move || {
+            let mut num = counter.lock().unwrap();
+
+            *num += 1;
+        });
+        handles.push(handle);
+    }
+
+    for handle in handles 
+    {
+        handle.join().unwrap();
+    }
+
+    println!("Result: {}", *counter.lock().unwrap());
+}
+```
+
+Atomic Reference Counting with Arc<T>
+```rust
+use std::sync::{Arc, Mutex};
+use std::thread;
+
+fn main() 
+{
+    let counter = Arc::new(Mutex::new(0));
+    let mut handles = vec![];
+
+    for _ in 0..10 
+    {
+        let counter = Arc::clone(&counter);
+        let handle = thread::spawn(move || {
+            let mut num = counter.lock().unwrap();
+
+            *num += 1;
+        });
+        handles.push(handle);
+    }
+
+    for handle in handles 
+    {
+        handle.join().unwrap();
+    }
+
+    println!("Result: {}", *counter.lock().unwrap());
+}
+```
+
+
+
+<!--------------------------------------------------------------------------------- Futures -->
+<br><br>
+
+## Futures
 ```rust
 
 ```
