@@ -68,6 +68,8 @@ IDE
 <br><br>
 
 ## Concept
+    With rust, the runtime error has been moved to compile time.
+
     Unwinding
     Rust walks back up the stack and cleans up the data from each function it encounters
 
