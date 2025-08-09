@@ -1,5 +1,6 @@
 # Variable
     All example about variable
+    
 
 
 
@@ -14,7 +15,8 @@
 <br><br>
 
 ## Mutability
-
+    by default, variables are immutable
+    
 Immutable
 ```rust
 fn main() 
