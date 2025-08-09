@@ -1,6 +1,6 @@
 # Type
-    All example about type
-
+    Every value in Rust is of a certain data type
+    The compiler can usually infer what type we want to use based on the value and how we use it.
 
 
 <!--------------------------------------------------------------------------------- Integer -->

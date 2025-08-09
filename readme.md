@@ -93,14 +93,12 @@ Rust Extension Pack
 
 ## Type
 Scalar
-    
     Integer
     Float
     Boolean
     Char
 
 Compound
-
     Tuple
     Array
     String
@@ -116,9 +114,10 @@ Compound
 
 ## Variable
     Declar
-    Mutability : Immutable, Mutable
+    Mutability
     Const
     Shadowing
+
     Array
     Vector
     Refrence
