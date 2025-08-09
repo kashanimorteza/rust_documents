@@ -2,20 +2,20 @@
     Rust code uses snake case as the conventional style for function and variable names
 
 
-Function | Parameters | Return
-Associated Function
-Generic
-Traits
-Closure
-Iterators
+    Function
+    Associated Function
+    Generic
+    Traits
+    Closure
+    Iterators
 
 
 
-<!--------------------------------------------------------------------------------- Function -->
+<!--------------------------------------------------------------------------------- Simple -->
 <br><br>
 
-## Function
-Simple
+## Simple
+Function
 ```rust
 fn main() 
 { 
@@ -28,7 +28,7 @@ fn fn_1()
 }
 ```
 
-Input
+Parameters
 ```rust
 fn main() 
 { 
@@ -41,30 +41,42 @@ fn fn_2(x: i8)
 }
 ```
 
-Output
 ```rust
 fn main() 
 {
-    //---fn_3
-    let var_fn_3: i8 = fn_3();
-    println!("fn_3 {}", var_fn_3);
-    //---fn_4
-    let var_fn_4: i8 = fn_4();
-    println!("fn_4 {}", var_fn_4);
+    fn_1(5, 'h');
 }
 
-fn fn_3() -> i8 
+fn fn_1(p1: i32, p2: char) 
+{
+    println!("p1: {} p2:{}", p1, p2);
+}
+```
+
+Return Values
+```rust
+fn main() 
+{
+    //---fn_1
+    let var_fn_1: i8 = fn_1();
+    println!("fn_1 {}", var_fn_1);
+    //---fn_2
+    let var_fn_2: i8 = fn_2();
+    println!("fn_2 {}", var_fn_2);
+}
+
+fn fn_1() -> i8 
 {
     return 16;
 }
 
-fn fn_4() -> i8 
+fn fn_2() -> i8 
 {
     9
 }
 ```
 
-Input | Output
+Parameters | Return Values
 ```rust
 fn main() 
 {

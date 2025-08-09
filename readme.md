@@ -162,7 +162,7 @@ Compound
 <br><br>
 
 ## Function
-    Function | Parameters | Return
+    Function
     Associated Function
     Generic
     Traits
