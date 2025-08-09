@@ -27,11 +27,11 @@ Compound
 ## Integer
 Signed
 
-    i8    1  Bits
-    i16   2  Bits
-    i32   4  Bits
-    i64   8  Bits
-    i128  16 Bits
+    i8    1     Bit
+    i16   2     Bits
+    i32   4     Bits
+    i64   8     Bits
+    i128  16    Bits
     isize 32/64 Bits -> arch dependent
 
 Unsigned
