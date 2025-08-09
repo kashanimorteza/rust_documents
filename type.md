@@ -13,19 +13,13 @@ Compound
 
     Tuple
     Array
+    Custom : Structs, Enums
     String
     Collection
-    Custom
     Pointer and Reference
     Miscellaneous
 
-```rust
 
-```
-
-```rust
-
-```
 
 <!--------------------------------------------------------------------------------- Integer -->
 <br><br>
@@ -230,39 +224,6 @@ fn main()
     println!("Item: {:?}", a);
 }
 ```
-
-
-
-<!--------------------------------------------------------------------------------- String -->
-<br><br>
-
-## String
-### String
-### &str
-
-
-
-<!--------------------------------------------------------------------------------- Collection -->
-<br><br>
-
-## Collection
-
-### Vec<T>
-    Growable array
-### VecDeque<T>
-    Double-ended queue
-### HashMap<K, V>
-    Key-value hash map
-### BTreeMap<K, V>
-    Sorted map
-### HashSet<T>
-    Set without duplicates
-### BTreeSet<T>
-    Sorted set
-### LinkedList<T>
-    Doubly linked list
-### BinaryHeap<T>
-    Priority queue (max heap)
 
 
 
@@ -790,8 +751,6 @@ fn area(rectangle: &Rectangle) -> u32
 }
 ```
 
-
-
 <!---------------------------------------- Enums -->
 ### Enums
 ```rust
@@ -997,6 +956,39 @@ fn main()
 }
 ```
 
+
+
+
+<!--------------------------------------------------------------------------------- String -->
+<br><br>
+
+## String
+### String
+### &str
+
+
+
+<!--------------------------------------------------------------------------------- Collection -->
+<br><br>
+
+## Collection
+
+### Vec<T>
+    Growable array
+### VecDeque<T>
+    Double-ended queue
+### HashMap<K, V>
+    Key-value hash map
+### BTreeMap<K, V>
+    Sorted map
+### HashSet<T>
+    Set without duplicates
+### BTreeSet<T>
+    Sorted set
+### LinkedList<T>
+    Doubly linked list
+### BinaryHeap<T>
+    Priority queue (max heap)
 
 
 

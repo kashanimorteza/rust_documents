@@ -1,6 +1,13 @@
-<!--------------------------------------------------------------------------------- Method -->
-# Error
-    All example about error
+<!--------------------------------------------------------------------------------- Error Handling -->
+# Error Handling
+    panic
+    abort
+    unwrap
+    expect
+    Result
+    Multiple error types
+    Iterating over Results
+
     unwrap()
 
     Recoverable :

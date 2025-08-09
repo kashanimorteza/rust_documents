@@ -94,9 +94,9 @@ Compound
 
     Tuple
     Array
+    Custom : Structs, Enums
     String
     Collection
-    Custom
     Pointer and Reference
     Miscellaneous
 
@@ -221,10 +221,10 @@ Compound
 
 
 
-<!--------------------------------------------------------------------------------- Error -->
+<!--------------------------------------------------------------------------------- Error Handling -->
 <br><br>
 
-## Error
+##  Error Handling
     panic
     abort
     unwrap

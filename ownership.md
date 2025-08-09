@@ -1,13 +1,5 @@
 
 # Ownership
-    All example about Ownership
-
-
-<!--------------------------------------------------------------------------------- Base -->
-<br><br>
-
-## Description
-
     Ownership is a set of rules that govern how a Rust program manages memory
 
     In a systems programming language like Rust:
@@ -21,6 +13,8 @@
     Any group of simple scalar values can implement Copy
     Nothing that requires allocation or is some form of resource can implement Copy
     The mechanics of passing a value to a function are similar to those when assigning a value to a variable
+
+
 
 <!--------------------------------------------------------------------------------- Slice -->
 <br><br>
@@ -116,7 +110,7 @@ fn main()
 
 
 
-<!--------------------------------------------------------------------------------- Slice -->
+<!--------------------------------------------------------------------------------- Function -->
 <br><br>
 
 ## Function
@@ -192,7 +186,7 @@ fn calculate_length(v: String) -> String
 ## Slice
     A string slice is a reference to part of a String, and it looks like this:
 
-Example 1 : subject
+subject
 ```rust
 fn main() 
 {
@@ -216,7 +210,7 @@ fn first_word(s: &String) -> usize
 }
 ```
 
-Example 1 : problem
+problem
 ```rust
 fn main() 
 {

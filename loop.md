@@ -29,7 +29,8 @@ fn main()
 
 Lable
 ```rust
-fn main() {
+fn main() 
+{
     let mut count = 0;
     'counting_up: loop 
     {
