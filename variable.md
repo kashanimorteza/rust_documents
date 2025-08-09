@@ -25,7 +25,7 @@ fn main()
 <br><br>
 
 ## Mutability
-    by default, variables are immutable
+    By default, variables are immutable
 
 ```rust
 fn main() 
@@ -87,6 +87,7 @@ fn main()
 
 ## Shadowing
 
+We can change value of variable
 ```rust
 fn main() 
 {
@@ -100,6 +101,7 @@ fn main()
 }
 ```
 
+We can change the type of the value but reuse the same name
 ```rust
 fn main()
 {
@@ -109,8 +111,8 @@ fn main()
 }
 ```
 
-Error
 ```rust
+//---Error 
 fn main() 
 {
     let mut spaces = "   ";
