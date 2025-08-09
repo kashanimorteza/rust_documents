@@ -1,5 +1,7 @@
-# Control flow
-    All example about Control flow
+# Condition
+    If
+    Match
+    Let if
 
 
 
@@ -63,7 +65,7 @@ fn main()
 ## Match
     With if, the condition needs to evaluate to a Boolean value, but here it can be any type
 
-### Simple
+Simple
 ```rust
 fn main() 
 {
@@ -78,7 +80,7 @@ fn main()
 }
 ```
 
-### Brackets
+Brackets
 ```rust
 fn main() 
 {
@@ -97,7 +99,7 @@ fn main()
 }
 ```
 
-### Enum
+Enum
 ```rust
 fn main() 
 {
@@ -122,7 +124,7 @@ fn main()
 }
 ```
 
-### Enum with Values
+Enum with Values
 ```rust
 fn main() 
 {
@@ -155,7 +157,7 @@ fn main()
 }
 ```
 
-### Option<T>
+Option<T>
 ```rust
 fn main() 
 {
@@ -174,7 +176,7 @@ fn main()
 }
 ```
 
-### Exhaustive
+Exhaustive
 ```rust
 fn main() 
 {
@@ -191,7 +193,7 @@ fn main()
 }
 ```
 
-### Catch-All
+Catch-All
 ```rust
 fn main() 
 {
