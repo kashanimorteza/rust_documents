@@ -229,19 +229,14 @@ fn main()
 
 
 
-<!--------------------------------------------------------------------------------- Custom -->
+<!--------------------------------------------------------------------------------- Structs -->
 <br><br>
 
-## Custom
-
-<!---------------------------------------- Structs -->
-### Structs
+## Structs
     Structure, is a custom data type that lets you package together and name multiple related values that make up a meaningful group
 
 Simple
 ```rust
-// Structs : Simple
-
 fn main() 
 {
     let user1 = User 
@@ -268,10 +263,8 @@ struct User
     sign_in_count: u64,
 }
 ```
-
+Simple : Change item
 ```rust
-// Structs : Simple : Change item
-
 fn main() 
 {
     let mut user1 = User 
@@ -295,9 +288,8 @@ struct User
     sign_in_count: u64,
 }
 ```
-
+Simple : Error
 ```rust
-// Structs : Simple : Error
 fn main() 
 {
     let user1 = User 
@@ -324,7 +316,6 @@ struct User
     sign_in_count: u64,
 }
 ```
-
 Creating Instances from Other Instances
 ```rust
 fn main() 
@@ -358,7 +349,6 @@ struct User
     sign_in_count: u64,
 }
 ```
-
 ```rust
 fn main() 
 {
@@ -394,7 +384,6 @@ struct User
     sign_in_count: u64,
 }
 ```
-
 ```rust
 fn main() 
 {
@@ -428,7 +417,6 @@ struct User
     sign_in_count: u64,
 }
 ```
-
 Creating Instances with function
 ```rust
 fn main() 
@@ -461,7 +449,6 @@ struct User
     sign_in_count: u64,
 }
 ```
-
 ```rust
 fn main() {
     let user1 = build_user
@@ -492,7 +479,6 @@ struct User
     sign_in_count: u64,
 }
 ```
-
 Tuple
 ```rust
 struct Color(i32, i32, i32);
@@ -503,7 +489,6 @@ fn main()
     println!("{} {} {}", color.0, color.1, color.2);
 }
 ```
-
 Unit-Like
 ```rust
 struct AlwaysEqual;
@@ -513,11 +498,8 @@ fn main()
     let subject = AlwaysEqual;
 }
 ```
-
-Methods
+Method : Associated Functions
 ```rust
-// Method : Associated Functions
-
 fn main() 
 {
     let book = Book::new("t", "a", 120);
@@ -545,10 +527,8 @@ impl Book
     }
 }
 ```
-
+Method : with Parameters
 ```rust
-// Method : with Parameters
-
 #[derive(Debug)]
 struct Rectangle 
 {
@@ -575,10 +555,8 @@ fn main()
     println!("The area of the rectangle is {} square pixels.", rect1.area());
 }
 ```
-
+Method : More Parameters
 ```rust
-// Method : More Parameters
-
 #[derive(Debug)]
 struct Rectangle 
 {
@@ -616,10 +594,8 @@ fn main()
     println!("Can rect1 hold rect3? {}", rect1.can_hold(&rect3));
 }
 ```
-
+Method : Note that we can choose to give a method the same name as one of the struct’s fields
 ```rust
-// Method : Note that we can choose to give a method the same name as one of the struct’s fields
-
 #[derive(Debug)]
 struct Rectangle 
 {
@@ -649,10 +625,8 @@ fn main()
     }
 }
 ```
-
+Method : Multiple impl Blocks
 ```rust
-// Method : Multiple impl Blocks
-
 #[derive(Debug)]
 struct Rectangle 
 {
@@ -698,10 +672,8 @@ fn main()
     println!("Can rect1 hold rect3? {}", rect1.can_hold(&rect3));
 }
 ```
-
-App
+App : Simple
 ```rust
-// App : Simple
 fn main() 
 {
     let width1 = 30;
@@ -714,9 +686,8 @@ fn area(width: u32, height: u32) -> u32
     width * height
 }
 ```
- 
+App : Refactoring with Tuples
 ```rust
-// App : Refactoring with Tuples
 fn main() 
 {
     let rect1 = (30, 50);
@@ -728,9 +699,8 @@ fn area(dimensions: (u32, u32)) -> u32
     dimensions.0 * dimensions.1
 }
 ```
-
-```rust
 // App : Refactoring with Structs
+```rust
 struct Rectangle 
 {
     width: u32,
@@ -753,8 +723,12 @@ fn area(rectangle: &Rectangle) -> u32
 }
 ```
 
-<!---------------------------------------- Enums -->
-### Enums
+
+
+<!--------------------------------------------------------------------------------- Enums -->
+<br><br>
+
+## Enums
 ```rust
 fn main() 
 {
@@ -773,7 +747,6 @@ fn main()
     println!("six: {:?}", six);
 }
 ```
-
 ```rust
 fn main() 
 {
@@ -798,7 +771,6 @@ fn main()
     
 }
 ```
-
 ```rust
 fn main() 
 {
@@ -811,7 +783,6 @@ fn main()
     let loopback = IpAddr::V6(String::from("::1"));
 }
 ```
-
 ```rust
 #![allow(unused)]
 fn main() 
@@ -833,7 +804,6 @@ fn main()
     }
 }
 ```
-
 ```rust
 fn main() 
 {
@@ -852,7 +822,6 @@ fn route(ip_kind: IpAddrKind)
 
 }
 ```
-
 ```rust
 fn main() 
 {
@@ -881,7 +850,6 @@ fn main()
     };
 }
 ```
-
 ```rust
 fn main() 
 {
@@ -905,7 +873,6 @@ fn main()
     m.call();
 }
 ```
-
 ```rust
 fn main() 
 {
@@ -931,7 +898,6 @@ fn print_enum<T: std::fmt::Debug>(item: MyEnum<T>)
     }
 }
 ```
-
 ```rust
 //The Option enum is defined in Rust's standard library as
 
@@ -941,7 +907,6 @@ pub enum Option<T>
     None,    // no value
 }
 ```
-
 ```rust
 fn main() 
 {
