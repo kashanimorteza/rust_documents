@@ -10,13 +10,12 @@
 
 
 
-
 <!--------------------------------------------------------------------------------- Mutability -->
 <br><br>
 
 ## Mutability
 
-Example 1 : Immutable
+Immutable
 ```rust
 fn main() 
 {
@@ -27,7 +26,7 @@ fn main()
 }
 ```
 
-Example 2 : Mutable
+Mutable
 ```rust
 fn main() 
 {
@@ -45,7 +44,6 @@ fn main()
 
 ## Const
 
-Example 1
 ```rust
 fn main() 
 {
@@ -61,7 +59,6 @@ fn main()
 
 ## Shadowing
 
-Example 1
 ```rust
 fn main() 
 {
@@ -75,7 +72,6 @@ fn main()
 }
 ```
 
-Example 2
 ```rust
 fn main()
 {
@@ -85,7 +81,7 @@ fn main()
 }
 ```
 
-Example 3 : error
+Error
 ```rust
 fn main() 
 {
@@ -101,7 +97,6 @@ fn main()
 
 ## Life Time
 
-Example 1
 ```rust
 fn main() {
     //----------1
@@ -145,7 +140,6 @@ fn fn_2(s1: &str, s2: &str) -> String {
 }
 ```
 
-Example 2
 ```rust
 fn main() {
     let string1: String = String::from("valueaaaaaasjbsajhdb");
@@ -170,18 +164,6 @@ fn longest<'a>(s1: &'a str, s2: &'a str) -> &'a str {
 
 ## Pointer
 
-Example 1
-```rust
-```
-
-Example 2
-```rust
-```
-
-Example 3
-```rust
-```
-
 
 
 <!--------------------------------------------------------------------------------- Smart pointer -->
@@ -189,7 +171,7 @@ Example 3
 
 ## Smart pointer
 
-Example 1 : box
+Box
 ```rust
 fn main() 
 {
@@ -198,7 +180,6 @@ fn main()
 }
 ```
 
-Example 2
 ```rust
 struct Order
 {
@@ -219,7 +200,6 @@ fn main()
 }
 ```
 
-Example 3
 ```rust
 #[derive(Debug)]
 enum List {
@@ -242,7 +222,7 @@ fn main() {
 }
 ```
 
-Example 4 : Deref
+Deref
 ```rust
 fn main() {
     let x: i32 = 5;
@@ -253,7 +233,7 @@ fn main() {
 }
 ```
 
-Example 5 : Deref
+Deref
 ```rust
 use std::ops::Deref;
 
@@ -284,7 +264,7 @@ fn main()
 }
 ```
 
-Example 6 : Deref
+Deref
 ```rust
 fn hi(name: &str) 
 {
@@ -298,7 +278,7 @@ fn main()
 }
 ```
 
-Example 7 : Wrapper
+Wrapper
 ```rust
 use std::ops::Deref;
 
@@ -333,7 +313,7 @@ fn main() {
 }
 ```
 
-Example 8 : Dynamic box 
+Dynamic box 
 ```rust
 trait Notifier  
 {
@@ -370,14 +350,6 @@ fn main()
         n.notify();
     }
 }
-```
-
-Example 9
-```rust
-```
-
-Example 10
-```rust
 ```
 
 

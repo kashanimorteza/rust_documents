@@ -1,5 +1,7 @@
 # Concurrency
     All example about concurrency
+    
+    When an individual works on several different tasks before any of them is complete, this is concurrency
 
     Process:
         In most current operating systems, an executed program’s code is run in a process
