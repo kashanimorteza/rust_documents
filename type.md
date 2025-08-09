@@ -190,6 +190,7 @@ fn main()
     Every element of an array must have the same type
     Arrays in Rust have a fixed length
     Arrays are useful when you want your data allocated on the stack
+    Arrays are more useful when you know the number of elements will not need to change
 
 ```rust
 fn main() 
@@ -219,7 +220,6 @@ fn main()
 }
 ```
 
-Arrays are more useful when you know the number of elements will not need to change
 ```rust
 #![allow(unused)]
 fn main() 

@@ -1,5 +1,16 @@
 # Variable
-    All example about variable
+    Declar
+    Mutability
+    Const
+    Shadowing
+    Environment
+
+    Vector
+    Refrence
+    DeRefrence
+    Life time
+    Pointer
+    Smart poiner
 
 
 
