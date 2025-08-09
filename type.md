@@ -34,6 +34,25 @@ Signed
     i128  16    Bits
     isize 32/64 Bits -> arch dependent
 
+```rust
+fn main() 
+{
+    let a: i8   = -128;
+    let b: i16  = -32_768;
+    let c: i32  = -2_147_483_648;
+    let d: i64  = -9_223_372_036_854_775_808;
+    let e: i128 = -170_141_183_460_469_231_731_687_303_715_884_105_728;
+    let f: isize = -2147483648; // depends on your CPU arch (32-bit or 64-bit)
+
+    println!("i8   : {}", a);
+    println!("i16  : {}", b);
+    println!("i32  : {}", c);
+    println!("i64  : {}", d);
+    println!("i128 : {}", e);
+    println!("isize: {}", f);
+}
+```
+
 Unsigned
 
     u8    1     Bit
@@ -46,29 +65,12 @@ Unsigned
 ```rust
 fn main() 
 {
-    // Signed integers
-    let a: i8   = -128;
-    let b: i16  = -32_768;
-    let c: i32  = -2_147_483_648;
-    let d: i64  = -9_223_372_036_854_775_808;
-    let e: i128 = -170_141_183_460_469_231_731_687_303_715_884_105_728;
-    let f: isize = -2147483648; // depends on your CPU arch (32-bit or 64-bit)
-
-    // Unsigned integers
     let g: u8   = 255;
     let h: u16  = 65_535;
     let i: u32  = 4_294_967_295;
     let j: u64  = 18_446_744_073_709_551_615;
     let k: u128 = 340_282_366_920_938_463_463_374_607_431_768_211_455;
     let l: usize = 4_294_967_295; // depends on CPU arch
-
-    // Print them all
-    println!("i8   : {}", a);
-    println!("i16  : {}", b);
-    println!("i32  : {}", c);
-    println!("i64  : {}", d);
-    println!("i128 : {}", e);
-    println!("isize: {}", f);
 
     println!("u8   : {}", g);
     println!("u16  : {}", h);
@@ -170,6 +172,8 @@ fn main()
     println!("{} is {} years old. Active? {}", name, age, active);
 }
 ```
+
+
 
 <!--------------------------------------------------------------------------------- Array -->
 <br><br>
