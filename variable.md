@@ -1,6 +1,5 @@
 # Variable
     All example about variable
-    
 
 
 
@@ -19,6 +18,8 @@ fn main()
     println!("The value of x is: {v_2}");
 }
 ```
+
+
 
 <!--------------------------------------------------------------------------------- Mutability -->
 <br><br>
@@ -65,6 +66,11 @@ fn main()
 <br><br>
 
 ## Const
+    Constants aren’t just immutable by default—they’re always immutable
+    Constants can be declared in any scope, including the global scope
+    Set only to a constant expression, not the result of a value that could only be computed at runtime
+    The type of the value must be annotated
+    Rust’s naming convention for constants is to use all uppercase with underscores between words
 
 ```rust
 fn main() 
