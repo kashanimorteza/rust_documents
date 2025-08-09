@@ -19,7 +19,13 @@ Compound
     Pointer and Reference
     Miscellaneous
 
+```rust
 
+```
+
+```rust
+
+```
 
 <!--------------------------------------------------------------------------------- Integer -->
 <br><br>
@@ -149,6 +155,7 @@ fn main()
 <br><br>
 
 ## Tuple
+    The way to have a collection of multiple values is with an array
     Tuples have a fixed length: once declared, they cannot grow or shrink in size
     Each position in the tuple has a type, and the types of the different values in the tuple don’t have to be the same
 
@@ -179,6 +186,50 @@ fn main()
 <br><br>
 
 ## Array
+    The way to have a collection of multiple values is with an array
+    Every element of an array must have the same type
+    Arrays in Rust have a fixed length
+    Arrays are useful when you want your data allocated on the stack
+
+```rust
+fn main() 
+{
+    let a = [1, 2, 3];
+    println!("Array: {:?}", a);
+    println!("Item: {}", a[0]);
+}
+```
+
+```rust
+#![allow(unused)]
+fn main() 
+{
+    let a: [i32; 5] = [1, 2, 3, 4, 5];
+    println!("Item: {:?}", a);
+}
+```
+
+```rust
+#![allow(unused)]
+fn main() 
+{
+    let a = [3; 5];
+    println!("Item: {:?}", a);
+    println!("Item: {}", a[0]);
+}
+```
+
+Arrays are more useful when you know the number of elements will not need to change
+```rust
+#![allow(unused)]
+fn main() 
+{
+    let a = [
+        "January", "February", "March", "April", "May", "June", "July","August", "September", "October", "November", "December"
+    ];
+    println!("Item: {:?}", a);
+}
+```
 
 
 

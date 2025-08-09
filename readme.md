@@ -119,15 +119,16 @@ Compound
     Mutability
     Const
     Shadowing
+    Environment
     
-    Array
+    
     Vector
     Refrence
     DeRefrence
     Life time
     Pointer
     Smart poiner
-    Environment
+    
 
 
 
