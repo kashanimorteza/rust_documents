@@ -9,14 +9,34 @@
 
 ## Declar
 
+```rust
+fn main() 
+{
+    let v_1:i8 = 1;
+    let v_2 = 2;
 
+    println!("The value of x is: {v_1}");
+    println!("The value of x is: {v_2}");
+}
+```
 
 <!--------------------------------------------------------------------------------- Mutability -->
 <br><br>
 
 ## Mutability
     by default, variables are immutable
-    
+
+```rust
+fn main() 
+{
+    let x = 5;
+    println!("The value of x is: {x}");
+
+    x = 6;
+    println!("The value of x is: {x}");
+}
+```
+
 Immutable
 ```rust
 fn main() 
