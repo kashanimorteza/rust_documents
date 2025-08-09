@@ -876,40 +876,6 @@ fn main()
 ```rust
 fn main() 
 {
-    let a = MyEnum::Single(42);
-    let b = MyEnum::Pair(1, 2);
-
-    print_enum(a);
-    print_enum(b);
-}
-
-enum MyEnum<T> 
-{
-    Single(T),
-    Pair(T, T),
-}
-
-fn print_enum<T: std::fmt::Debug>(item: MyEnum<T>) 
-{
-    match item 
-    {
-        MyEnum::Single(val) => println!("Single: {:?}", val),
-        MyEnum::Pair(x, y) => println!("Pair: {:?} and {:?}", x, y),
-    }
-}
-```
-```rust
-//The Option enum is defined in Rust's standard library as
-
-pub enum Option<T> 
-{
-    Some(T), // contains a value of type T
-    None,    // no value
-}
-```
-```rust
-fn main() 
-{
     // use std::option::Option::{Some, None};
     
     let some_number: Option<i32> = Some(42);
@@ -922,7 +888,6 @@ fn main()
     }
 }
 ```
-
 
 
 
