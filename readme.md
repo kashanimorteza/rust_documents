@@ -116,7 +116,7 @@ Compound
 
 ## Variable
     Declar
-    Mutability
+    Mutability : Immutable, Mutable
     Const
     Shadowing
     Array
