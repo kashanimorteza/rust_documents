@@ -149,6 +149,7 @@ fn main()
 <br><br>
 
 ## Tuple
+    Store on stack
     The way to have a collection of multiple values is with an array
     Tuples have a fixed length: once declared, they cannot grow or shrink in size
     Each position in the tuple has a type, and the types of the different values in the tuple don’t have to be the same
@@ -180,6 +181,7 @@ fn main()
 <br><br>
 
 ## Array
+    Store on stack
     The way to have a collection of multiple values is with an array
     Every element of an array must have the same type
     Arrays in Rust have a fixed length
@@ -962,9 +964,112 @@ fn main()
 <!--------------------------------------------------------------------------------- String -->
 <br><br>
 
-## String
-### String
-### &str
+## String 
+
+&str
+```rust
+fn main() 
+{
+    let s ="hello";
+    println!("s: {}", s);
+}
+```
+
+String
+```rust
+fn main() 
+{
+    let s1 = String::new();
+    println!("s1: {}", s1);
+
+    let data = "initial contents";
+    let s2 = data.to_string();
+    println!("s2: {}", s2);
+
+    let s3 = "initial contents".to_string();
+    println!("s3: {}", s3);
+
+    let s4 = String::from("initial contents");
+    println!("s4: {}", s4);
+}
+```
+
+Updating a String
+```rust
+fn main() 
+{
+    let mut s = String::from("foo");
+    s.push_str("bar");
+
+    println!("s: {}", s);
+}
+```
+
+```rust
+fn main() 
+{
+    let mut s1 = String::from("foo");
+    let s2 = "bar";
+    s1.push_str(s2);
+    println!("s2 is {}", s2);
+}
+```
+
+Concatenation with the + Operator or the format! Macro
+```rust
+fn main() 
+{
+    let s1 = String::from("Hello, ");
+    let s2 = String::from("world!");
+    let s3 = s1 + &s2;
+    println!("s3 is {}", s3); // note s1 has been moved here and can no longer be used
+}
+```
+
+```rust
+fn main() 
+{
+    let s1 = String::from("tic");
+    let s2 = String::from("tac");
+    let s3 = String::from("toe");
+    let s = format!("{s1}-{s2}-{s3}");
+    println!("s is {}", s);
+}
+```
+
+Slicing Strings
+```rust
+#![allow(unused)]
+fn main() 
+{
+    let hello: &'static str = "hello";
+    let s = &hello[0..1];
+    println!("s is {}", s);
+}
+```
+
+Methods for Iterating Over Strings
+```rust
+#![allow(unused)]
+fn main() 
+{
+    for c in "hello".chars() 
+    {
+        println!("char is {}", c);
+    }
+}
+```
+
+```rust
+#![allow(unused)]
+fn main() 
+{
+    for b in "hello".bytes() 
+    {
+        println!("b is {}", b);
+    }
+}
+```
 
 
 
