@@ -36,11 +36,11 @@ Signed
 
 Unsigned
 
-    u8    1  Bits
-    u16   2  Bits
-    u32   4  Bits
-    u64   8  Bits
-    u128  16 Bits
+    u8    1     Bit
+    u16   2     Bits
+    u32   4     Bits
+    u64   8     Bits
+    u128  16    Bits
     usize 32/64 Bits -> arch dependent
 
 
