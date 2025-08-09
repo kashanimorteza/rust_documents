@@ -43,6 +43,41 @@ Unsigned
     u128  16    Bits
     usize 32/64 Bits -> arch dependent
 
+```rust
+fn main() 
+{
+    // Signed integers
+    let a: i8   = -128;
+    let b: i16  = -32_768;
+    let c: i32  = -2_147_483_648;
+    let d: i64  = -9_223_372_036_854_775_808;
+    let e: i128 = -170_141_183_460_469_231_731_687_303_715_884_105_728;
+    let f: isize = -2147483648; // depends on your CPU arch (32-bit or 64-bit)
+
+    // Unsigned integers
+    let g: u8   = 255;
+    let h: u16  = 65_535;
+    let i: u32  = 4_294_967_295;
+    let j: u64  = 18_446_744_073_709_551_615;
+    let k: u128 = 340_282_366_920_938_463_463_374_607_431_768_211_455;
+    let l: usize = 4_294_967_295; // depends on CPU arch
+
+    // Print them all
+    println!("i8   : {}", a);
+    println!("i16  : {}", b);
+    println!("i32  : {}", c);
+    println!("i64  : {}", d);
+    println!("i128 : {}", e);
+    println!("isize: {}", f);
+
+    println!("u8   : {}", g);
+    println!("u16  : {}", h);
+    println!("u32  : {}", i);
+    println!("u64  : {}", j);
+    println!("u128 : {}", k);
+    println!("usize: {}", l);
+}
+```
 
 
 <!--------------------------------------------------------------------------------- Float -->
@@ -52,6 +87,16 @@ Unsigned
     f32   32 Bits
     f64   64 Bits
 
+```rust
+fn main() 
+{
+    let is_active: bool = true;
+    let is_complete: bool = false;
+
+    println!("is_active: {}", is_active);
+    println!("is_complete: {}", is_complete);
+}
+```
 
 
 <!--------------------------------------------------------------------------------- Boolean -->
@@ -60,6 +105,16 @@ Unsigned
 ## Boolean
     bool        1 Bits
 
+```rust
+fn main() 
+{
+    let is_active: bool = true;
+    let is_complete: bool = false;
+
+    println!("is_active: {}", is_active);
+    println!("is_complete: {}", is_complete);
+}
+```
 
 
 <!--------------------------------------------------------------------------------- Char -->
@@ -68,12 +123,28 @@ Unsigned
 ## Char
     char        4 Bits
 
+```rust
+fn main() 
+{
+    let letter: char = 'A';
+    let digit: char = '7';
+    let symbol: char = '#';
+    let emoji: char = '😊';
+
+    println!("letter: {}", letter);
+    println!("digit: {}", digit);
+    println!("symbol: {}", symbol);
+    println!("emoji: {}", emoji);
+}
+```
+
 
 
 <!--------------------------------------------------------------------------------- Tuple -->
 <br><br>
 
 ## Tuple
+    Tuples have a fixed length: once declared, they cannot grow or shrink in size
 
 
 
