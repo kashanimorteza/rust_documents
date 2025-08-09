@@ -1,4 +1,7 @@
 # Function
+    Rust code uses snake case as the conventional style for function and variable names
+
+    
     Function | Parameters | Return
     Associated Function
     Generic
