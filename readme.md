@@ -44,8 +44,11 @@ Windows
 ```
 
 IDE
-    Vs-Code
-    Rust Extension Pack
+```bash
+Vs-Code
+Rust Extension Pack
+```
+
 
 
 <!--------------------------------------------------------------------------------- Tools -->
@@ -68,26 +71,21 @@ IDE
 <br><br>
 
 ## Concept
-    With rust, the runtime error has been moved to compile time.
-
     Unwinding
-    Rust walks back up the stack and cleans up the data from each function it encounters
-
     Buffer overread
-    Attempting to read beyond the end of a data structure is undefined behavior. You might get whatever is at the location in memory that would correspond to that element in the data structure, even though the memory doesn’t belong to that structure
 
 
 
-
-<!--------------------------------------------------------------------------------- Base -->
+<!--------------------------------------------------------------------------------- Roadmap -->
 <br><br>
 
-## Base
+## Roadmap
     Base 10 | Base 2
     Bit | Byte | Store integer, char, string on memory
     Stack And Heap | Garbage collection
     Scop | Prelude
     macro
+
 
 
 <!--------------------------------------------------------------------------------- Type -->
@@ -145,6 +143,7 @@ Compound
     Comment
     Parentheses
     Square Brackets
+
 
 
 <!--------------------------------------------------------------------------------- Condition -->
