@@ -93,12 +93,14 @@ Rust Extension Pack
 
 ## Type
 Scalar
+    
     Integer
     Float
     Boolean
     Char
 
 Compound
+
     Tuple
     Array
     String

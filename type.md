@@ -7,14 +7,17 @@
 <br><br>
 
 ## Integer
-### Signed
+Signed
+
     i8    1  Bits
     i16   2  Bits
     i32   4  Bits
     i64   8  Bits
     i128  16 Bits
     isize 32/64 Bits -> arch dependent
-### Unsigned
+
+Unsigned
+
     u8    1  Bits
     u16   2  Bits
     u32   4  Bits
