@@ -164,7 +164,6 @@ Compound
 ## Function
     Function
     Associated Function
-    Generic
     Traits
     Closure
     Iterators
@@ -195,6 +194,13 @@ Compound
 <br><br>
 
 ## Borrowing
+
+
+
+<!--------------------------------------------------------------------------------- Generic -->
+<br><br>
+
+## Generic
 
 
 
