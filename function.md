@@ -1,5 +1,10 @@
 # Function
-    All example about function
+    Function | Parameters | Return
+    Associated Function
+    Generic
+    Traits
+    Closure
+    Iterators
 
 
 
@@ -7,7 +12,7 @@
 <br><br>
 
 ## Function
-Example 1 : Simple
+Simple
 ```rust
 fn main() 
 { 
@@ -20,7 +25,7 @@ fn fn_1()
 }
 ```
 
-Example 2 : Input
+Input
 ```rust
 fn main() 
 { 
@@ -33,7 +38,7 @@ fn fn_2(x: i8)
 }
 ```
 
-Example 3 : Output
+Output
 ```rust
 fn main() 
 {
@@ -56,7 +61,7 @@ fn fn_4() -> i8
 }
 ```
 
-Example 4 : Input | Output
+Input | Output
 ```rust
 fn main() 
 {
@@ -69,6 +74,7 @@ fn fn_5(x: i8) -> i8
     return x;
 }
 ```
+
 
 
 <!--------------------------------------------------------------------------------- Associated Function -->
@@ -97,7 +103,6 @@ fn fn_5(x: i8) -> i8
 
 ## Closure
 
-Example 1
 ```rust
 fn main() 
 {
@@ -116,7 +121,6 @@ fn fn_2(v: u8) -> u8
 }
 ```
 
-Example 2
 ```rust
 fn main() 
 {
@@ -126,7 +130,6 @@ fn main()
 }
 ```
 
-Example 3
 ```rust
 fn main() 
 {
@@ -139,7 +142,6 @@ fn main()
 }
 ```
 
-Example 4
 ```rust
 fn main() 
 {
@@ -152,7 +154,6 @@ fn main()
 }
 ```
 
-Example 5
 ```rust
 fn main() 
 {
@@ -168,7 +169,6 @@ fn main()
 }
 ```
 
-Example 6
 ```rust
 struct Product {
     name: String,
@@ -202,7 +202,7 @@ fn main()
 
 ## Iterators
 
-Example 1 : next
+next
 ```rust
 fn main() 
 {
@@ -217,7 +217,7 @@ fn main()
 }
 ```
 
-Example 2 : filter
+filter
 ```rust
 struct Product {
     name: String,
@@ -246,7 +246,7 @@ fn main()
 }
 ```
 
-Example 3 : map
+map
 ```rust
 fn main() {
     let prices = vec![100.0, 200.0, 42.0];
@@ -262,7 +262,7 @@ fn main() {
 }
 ```
 
-Example 4 : sum
+sum
 ```rust
 fn main() {
     let payments = vec![100.0, 200.0, 42.0];
@@ -271,7 +271,7 @@ fn main() {
 }
 ```
 
-Example 5 : take
+take
 ```rust
 fn main() {
     let payments = vec![100.0, 200.0, 42.0, 500.0, 126.0, 800.8];
@@ -280,7 +280,7 @@ fn main() {
 }
 ```
 
-Example 6 : filtre + map + sum
+filtre + map + sum
 ```rust
 struct Order {
     amount: f64,
@@ -304,7 +304,7 @@ fn main() {
 }
 ```
 
-Example 7 : check time
+check time
 ```rust
 use std::time::Instant;
 
@@ -317,7 +317,7 @@ fn main() {
 }
 ```
 
-Example 8 : for
+for
 ```rust
 use std::time::Instant;
 
@@ -334,7 +334,7 @@ fn main() {
 }
 ```
 
-Example 9 : par_iter
+par_iter
 ```rust
 use std::time::Instant;
 use rayon::prelude::*;
