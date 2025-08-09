@@ -80,6 +80,7 @@ fn main()
 ```
 
 
+
 <!--------------------------------------------------------------------------------- Float -->
 <br><br>
 
@@ -99,6 +100,7 @@ fn main()
 ```
 
 
+
 <!--------------------------------------------------------------------------------- Boolean -->
 <br><br>
 
@@ -115,6 +117,7 @@ fn main()
     println!("is_complete: {}", is_complete);
 }
 ```
+
 
 
 <!--------------------------------------------------------------------------------- Char -->
@@ -145,8 +148,28 @@ fn main()
 
 ## Tuple
     Tuples have a fixed length: once declared, they cannot grow or shrink in size
+    Each position in the tuple has a type, and the types of the different values in the tuple don’t have to be the same
 
+```rust
+fn main() 
+{
+    let person: (&str, i32, bool) = ("Alice", 30, true);
+    println!("Tuple: {:?}", person);
 
+    println!("Name: {}", person.0);
+    println!("Age: {}", person.1);
+    println!("Is Active: {}", person.2);
+}
+```
+
+```rust
+fn main() 
+{
+    let person: (&str, i32, bool) = ("Alice", 30, true);
+    let (name, age, active) = person;
+    println!("{} is {} years old. Active? {}", name, age, active);
+}
+```
 
 <!--------------------------------------------------------------------------------- Array -->
 <br><br>
