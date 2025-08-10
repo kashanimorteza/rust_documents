@@ -6,16 +6,17 @@
         The Rust compiler has a borrow checker that compares scopes to determine whether all borrows are valid
 
 
-<!--------------------------------------------------------------------------------- 1 -->
+<!--------------------------------------------------------------------------------- Working -->
 <br><br>
 
-## 1 : Working
+## Working
 ```rust
 fn main() 
 {
-    let v;
+    let v: i32;
     {
         v = 42;
+        //Copy ownership has occurred.
     }
     println!("v: {}", v);
 }
@@ -23,60 +24,17 @@ fn main()
 ```rust
 fn main() 
 {
-    let v;
+    let v: i32;
     {
         let x = 5;
         v = x;
+        //Copy ownership has occurred.
+        println!("x: {}", x);
+
     }
     println!("v: {}", v);
 }
 ```
-
-
-
-<!--------------------------------------------------------------------------------- 2 -->
-<br><br>
-
-## 2 : Dangling References 
-```rust
-fn main() 
-{
-    let mut v : &mut i32;
-    {
-        let x = 5;
-        v = &x;
-    }
-    println!("v: {}", v);
-}
-```
-
-
-
-<!--------------------------------------------------------------------------------- 3 -->
-<br><br>
-
-## 3
-```rust
-fn main() 
-{
-    let mut z : &mut i32;
-    change(z);
-    println!("z: {}", z);
-
-    fn change(v : &mut i32)
-    {
-        let x: i32 = 42;
-        v = &x;
-    }
-}
-```
-
-
-
-<!--------------------------------------------------------------------------------- 4 -->
-<br><br>
-
-## 4
 ```rust
 fn main() 
 {
@@ -84,6 +42,8 @@ fn main()
     let str2 = String::from("bbbbbbbbb");
     let result = fn_1(str1, str2);
     println!("fn_1: {}", result);
+
+    // Transfer ownership has occurred.
     // println!("str1: {}", str1);
     // println!("str2: {}", str2);
 
@@ -97,16 +57,11 @@ fn main()
         {
             s2
         }
+        // vaghti ye variable return mikoni Transfer ownership etefagh miuftad
+        // dar vaghe dari variable va ownershipesho Transfer mikoni birooon
     }
 }
 ```
-
-
-
-<!--------------------------------------------------------------------------------- 5 -->
-<br><br>
-
-## 5
 ```rust
 fn main() 
 {
@@ -114,6 +69,8 @@ fn main()
     let str2 = String::from("bbbbbbbbb");
     let result = fn_2(&str1, &str2);
     println!("fn_1: {}", result);
+
+    // ownership transfer nashode
     println!("str1: {}", str1);
     println!("str2: {}", str2);
 
@@ -127,22 +84,19 @@ fn main()
         {
             s2.to_string()
         }
+        // vaghti ye variable return mikoni Transfer ownership etefagh miuftad
+        // dar vaghe dari variable va ownershipesho Transfer mikoni birooon
     }
 }
 ```
-
-
-
-<!--------------------------------------------------------------------------------- 6 -->
-<br><br>
-
-## 6
 ```rust
 fn main() 
 {
     let str1 = String::from("aaa");
     let str2 = String::from("bbbbbbbbb");
     fn_2(&str1, &str2);
+
+    // ownership transfer nashode
     println!("str1: {}", str1);
     println!("str2: {}", str2);
     
@@ -150,16 +104,49 @@ fn main()
     fn fn_2(s1: &str, s2: &str)  
     {
         println!("s1: {} s2: {} ", s1, s2);
+        //chizi nemikhay biroon bedi ke life time mani peyda konad
     }
 }
 ```
 
 
-
-<!--------------------------------------------------------------------------------- 7 -->
+<!--------------------------------------------------------------------------------- Dangling References  -->
 <br><br>
 
-## 7
+## Dangling References 
+```rust
+fn main() 
+{
+    let v : &i32;
+    {
+        let x: i32 = 5;
+        v = &x;
+        //x az beyn khahad raft va hamchenin refrence of x
+        // pas v dar be refrence ke nst eshare mikone
+    }
+    println!("v: {}", v);
+}
+```
+```rust
+fn main() 
+{
+    let z : & i32;
+    change(z);
+    println!("z: {}", z);
+
+    fn change(v : & i32)
+    {
+        let x: i32 = 42;
+        v = &x;
+    }
+}
+```
+
+
+<!--------------------------------------------------------------------------------- Problem -->
+<br><br>
+
+## Problem
 ```rust
 fn main() 
 {
@@ -184,10 +171,10 @@ fn main()
 
 
 
-<!--------------------------------------------------------------------------------- 8 -->
+<!--------------------------------------------------------------------------------- Resolve -->
 <br><br>
 
-## 8
+## Resolve
 ```rust
 fn main() 
 {
@@ -212,10 +199,10 @@ fn main()
 
 
 
-<!--------------------------------------------------------------------------------- 9 -->
+<!--------------------------------------------------------------------------------- Struct -->
 <br><br>
 
-## 9
+## Struct
 ```rust
 fn main() 
 {
@@ -242,13 +229,6 @@ fn main()
     println!("author: {}", author);
 }
 ```
-
-
-
-<!--------------------------------------------------------------------------------- 10 -->
-<br><br>
-
-## 10
 ```rust
 fn main() 
 {
