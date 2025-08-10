@@ -31,7 +31,7 @@ fn main()
     println!("v2: {}", v);
 }
 ```
-Ok : Because the reference points to the value 2 : Copy ownership
+Ok : Because the reference points to the value 2 : Copy ownership : Value
 ```rust
 fn main() 
 {
@@ -44,7 +44,7 @@ fn main()
     println!("v3: {}", v);
 }
 ```
-Ok : Because the reference points to the value x : Copy ownership
+Ok : Because the reference points to the value x : Copy ownership : Variable
 ```rust
 fn main() 
 {
@@ -58,7 +58,7 @@ fn main()
     println!("v3: {}", v);
 }
 ```
-Ok : Because the reference points to the value return : Transfer ownership | Return variable
+Ok : Because the reference points to the value return : Transfer ownership : Return variable
 ```rust
 fn main() 
 {
@@ -83,7 +83,7 @@ fn main()
     }
 }
 ```
-Ok : Because the reference points to the value return : Transfer ownership | Return variable
+Ok : Because the reference points to the value return : Transfer ownership : Return variable
 ```rust
 fn main() 
 {
