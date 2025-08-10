@@ -47,6 +47,8 @@ fn main()
     let str2 = String::from("bbbbbbbbb");
     let result = fn_1(str1, str2);
     println!("fn_1: {}", result);
+    // println!("str1: {}", str1);
+    // println!("str2: {}", str2);
 
     fn fn_1(s1: String, s2: String) -> String 
     {
@@ -69,6 +71,8 @@ fn main()
     let str2 = String::from("bbbbbbbbb");
     let result = fn_2(&str1, &str2);
     println!("fn_1: {}", result);
+    println!("str1: {}", str1);
+    println!("str2: {}", str2);
 
     fn fn_2(s1: &str, s2: &str) -> String 
     {
