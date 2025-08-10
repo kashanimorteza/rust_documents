@@ -27,6 +27,7 @@ fn main()
 }
 ```
 
+## 3
 ```rust
 fn main() 
 {
@@ -42,6 +43,7 @@ fn main()
 }
 ```
 
+## 4
 ```rust
 fn main() 
 {
@@ -66,6 +68,7 @@ fn main()
 }
 ```
 
+## 5
 ```rust
 fn main() 
 {
@@ -90,6 +93,7 @@ fn main()
 }
 ```
 
+## 6
 ```rust
 fn main() 
 {
@@ -107,6 +111,7 @@ fn main()
 }
 ```
 
+## 7
 ```rust
 fn main() 
 {
@@ -129,6 +134,7 @@ fn main()
 }
 ```
 
+## 8
 ```rust
 fn main() 
 {
@@ -151,6 +157,7 @@ fn main()
 }
 ```
 
+## 9
 ```rust
 fn main() 
 {
@@ -178,6 +185,7 @@ fn main()
 }
 ```
 
+## 10
 ```rust
 fn main() 
 {
