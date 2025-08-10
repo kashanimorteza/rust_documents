@@ -93,6 +93,23 @@ fn main()
 {
     let str1 = String::from("aaa");
     let str2 = String::from("bbbbbbbbb");
+    fn_2(&str1, &str2);
+    println!("str1: {}", str1);
+    println!("str2: {}", str2);
+    
+
+    fn fn_2(s1: &str, s2: &str)  
+    {
+        println!("s1: {} s2: {} ", s1, s2);
+    }
+}
+```
+
+```rust
+fn main() 
+{
+    let str1 = String::from("aaa");
+    let str2 = String::from("bbbbbbbbb");
     let result = fn_2(&str1, &str2);
     println!("fn_1: {}", result);
 
@@ -131,25 +148,3 @@ fn main()
     }
 }
 ```
-
-```rust
-
-```
-
-```rust
-
-```
-
-```rust
-
-```
-
-
-
-
-
-
-
-
-
-
