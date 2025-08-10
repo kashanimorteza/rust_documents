@@ -2,21 +2,17 @@
     Lifetimes ensure that references are valid as long as we need them to be
     The main aim of lifetimes is to prevent dangling references, which cause a program to reference data other than the data it’s intended to reference
 
-    Dangling References :
-        Eshare variable be jaee ke vojood nadarad
-        1 - variable morde bashad
-        2 - be jai ke nist eshare konad
-
     The Borrow Checker:
         The Rust compiler has a borrow checker that compares scopes to determine whether all borrows are valid
 
+    Dangling References : 
+        Eshare variable be jaee ke vojood nadarad
 
 <!--------------------------------------------------------------------------------- Working -->
 <br><br>
 
 ## Base
-
-Alive | No-Refrence 
+Error : Because the reference doesn't point to anywhere.
 ```rust
 fn main() 
 {
@@ -24,7 +20,7 @@ fn main()
     println!("v: {}", v);
 }
 ```
-Alive | Refrenced 
+Ok : Because the reference points to the value 1 at first
 ```rust
 fn main() 
 {
@@ -35,7 +31,7 @@ fn main()
     println!("v2: {}", v);
 }
 ```
-Alive | Refrenced 
+Ok : Because the reference points to the value 2 : Copy ownership
 ```rust
 fn main() 
 {
@@ -48,7 +44,7 @@ fn main()
     println!("v3: {}", v);
 }
 ```
-Alive | Refrenced 
+Ok : Because the reference points to the value x : Copy ownership
 ```rust
 fn main() 
 {
@@ -62,17 +58,14 @@ fn main()
     println!("v3: {}", v);
 }
 ```
-Alive | Refrenced 
+Ok : Because the reference points to the value return : Transfer ownership | Return variable
 ```rust
 fn main() 
 {
     let str1 = String::from("aaa");
     let str2 = String::from("bbbbbbbbb");
-    let result = fn_1(str1, str2); //Transfer ownership has occurred.
+    let result = fn_1(str1, str2); 
     println!("fn_1: {}", result);
-
-    // println!("str1: {}", str1);
-    // println!("str2: {}", str2);
 
     fn fn_1(s1: String, s2: String) -> String 
     {
@@ -86,19 +79,18 @@ fn main()
         }
         // vaghti ye variable return mikoni Transfer ownership etefagh miuftad
         // dar vaghe dari variable va ownershipesho Transfer mikoni birooon
+        // Transfer ownership has occurred for return variable
     }
 }
 ```
+Ok : Because the reference points to the value return : Transfer ownership | Return variable
 ```rust
 fn main() 
 {
     let str1 = String::from("aaa");
     let str2 = String::from("bbbbbbbbb");
-    let result = fn_2(&str1, &str2); // ownership transfer nashode
+    let result = fn_2(&str1, &str2);
     println!("fn_1: {}", result);
-
-    println!("str1: {}", str1);
-    println!("str2: {}", str2);
 
     fn fn_2(s1: &str, s2: &str) -> String 
     {
@@ -112,6 +104,7 @@ fn main()
         }
         // vaghti ye variable return mikoni Transfer ownership etefagh miuftad
         // dar vaghe dari variable va ownershipesho Transfer mikoni birooon
+        // Transfer ownership has occurred for return variable
     }
 }
 ```
