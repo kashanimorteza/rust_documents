@@ -1,5 +1,9 @@
 # Lifetime
     Lifetimes ensure that references are valid as long as we need them to be
+    The main aim of lifetimes is to prevent dangling references, which cause a program to reference data other than the data it’s intended to reference
+
+    The Borrow Checker:
+        The Rust compiler has a borrow checker that compares scopes to determine whether all borrows are valid
 
 
 <!--------------------------------------------------------------------------------- 1 -->
@@ -16,6 +20,17 @@ fn main()
     println!("v: {}", v);
 }
 ```
+```rust
+fn main() 
+{
+    let v;
+    {
+        let x = 5;
+        v = x;
+    }
+    println!("v: {}", v);
+}
+```
 
 
 
@@ -26,7 +41,7 @@ fn main()
 ```rust
 fn main() 
 {
-    let v;
+    let mut v : &mut i32;
     {
         let x = 5;
         v = &x;
