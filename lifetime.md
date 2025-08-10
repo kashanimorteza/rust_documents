@@ -2,6 +2,7 @@
     All example about Lifetime
 
 
+## 1
 ```rust
 fn main() 
 {
@@ -13,6 +14,7 @@ fn main()
 }
 ```
 
+## 2
 ```rust
 fn main() 
 {
@@ -198,8 +200,4 @@ fn main()
     let book = Book{title: &title, author: &author};
     book.display();
 }
-```
-
-```rust
-
 ```
