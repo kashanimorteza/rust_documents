@@ -1,11 +1,11 @@
 # Lifetime
-    All example about Lifetime
+    Lifetimes ensure that references are valid as long as we need them to be
 
 
 <!--------------------------------------------------------------------------------- 1 -->
 <br><br>
 
-## 1
+## 1 : Working
 ```rust
 fn main() 
 {
@@ -22,7 +22,7 @@ fn main()
 <!--------------------------------------------------------------------------------- 2 -->
 <br><br>
 
-## 2
+## 2 : Dangling References 
 ```rust
 fn main() 
 {
