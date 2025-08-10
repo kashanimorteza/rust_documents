@@ -2,6 +2,11 @@
     Lifetimes ensure that references are valid as long as we need them to be
     The main aim of lifetimes is to prevent dangling references, which cause a program to reference data other than the data it’s intended to reference
 
+    Dangling References :
+        Eshare variable be jaee ke vojood nadarad
+        1 - variable morde bashad
+        2 - be jai ke nist eshare konad
+
     The Borrow Checker:
         The Rust compiler has a borrow checker that compares scopes to determine whether all borrows are valid
 
@@ -9,7 +14,17 @@
 <!--------------------------------------------------------------------------------- Working -->
 <br><br>
 
-## Working
+## Base
+
+Alive | No-Refrence 
+```rust
+fn main() 
+{
+    let v: i32;
+    println!("v: {}", v);
+}
+```
+Alive | Refrenced 
 ```rust
 fn main() 
 {
@@ -20,6 +35,7 @@ fn main()
     println!("v2: {}", v);
 }
 ```
+Alive | Refrenced 
 ```rust
 fn main() 
 {
@@ -32,6 +48,7 @@ fn main()
     println!("v3: {}", v);
 }
 ```
+Alive | Refrenced 
 ```rust
 fn main() 
 {
@@ -45,6 +62,7 @@ fn main()
     println!("v3: {}", v);
 }
 ```
+Alive | Refrenced 
 ```rust
 fn main() 
 {
