@@ -13,26 +13,36 @@
 ```rust
 fn main() 
 {
-    let v: i32;
+    let v: i32 = 1;
     {
-        v = 42;
-        //Copy ownership has occurred.
+        println!("v1: {}", v);
     }
-    println!("v: {}", v);
+    println!("v2: {}", v);
 }
 ```
 ```rust
 fn main() 
 {
-    let v: i32;
+    let mut v: i32 = 1;
     {
-        let x = 5;
-        v = x;
-        //Copy ownership has occurred.
-        println!("x: {}", x);
-
+        println!("v1: {}", v);
+        v = 2; //Copy ownership has occurred.
+        println!("v2: {}", v);
     }
-    println!("v: {}", v);
+    println!("v3: {}", v);
+}
+```
+```rust
+fn main() 
+{
+    let mut v: i32 = 1;
+    {
+        println!("v1: {}", v);
+        let x = 2;
+        v = x; //Copy ownership has occurred.
+        println!("v2: {}", v);
+    }
+    println!("v3: {}", v);
 }
 ```
 ```rust
@@ -40,10 +50,9 @@ fn main()
 {
     let str1 = String::from("aaa");
     let str2 = String::from("bbbbbbbbb");
-    let result = fn_1(str1, str2);
+    let result = fn_1(str1, str2); //Transfer ownership has occurred.
     println!("fn_1: {}", result);
 
-    // Transfer ownership has occurred.
     // println!("str1: {}", str1);
     // println!("str2: {}", str2);
 
@@ -67,10 +76,9 @@ fn main()
 {
     let str1 = String::from("aaa");
     let str2 = String::from("bbbbbbbbb");
-    let result = fn_2(&str1, &str2);
+    let result = fn_2(&str1, &str2); // ownership transfer nashode
     println!("fn_1: {}", result);
 
-    // ownership transfer nashode
     println!("str1: {}", str1);
     println!("str2: {}", str2);
 
@@ -89,25 +97,7 @@ fn main()
     }
 }
 ```
-```rust
-fn main() 
-{
-    let str1 = String::from("aaa");
-    let str2 = String::from("bbbbbbbbb");
-    fn_2(&str1, &str2);
 
-    // ownership transfer nashode
-    println!("str1: {}", str1);
-    println!("str2: {}", str2);
-    
-
-    fn fn_2(s1: &str, s2: &str)  
-    {
-        println!("s1: {} s2: {} ", s1, s2);
-        //chizi nemikhay biroon bedi ke life time mani peyda konad
-    }
-}
-```
 
 
 <!--------------------------------------------------------------------------------- Dangling References  -->
@@ -121,23 +111,26 @@ fn main()
     {
         let x: i32 = 5;
         v = &x;
-        //x az beyn khahad raft va hamchenin refrence of x
-        // pas v dar be refrence ke nst eshare mikone
     }
+    //x az beyn khahad raft va hamchenin refrence of x
+    //pas v inja dar be refrence ke nist eshare mikone
     println!("v: {}", v);
 }
 ```
 ```rust
 fn main() 
 {
-    let z : & i32;
-    change(z);
-    println!("z: {}", z);
+    let v : &i32;
+    change(v);
 
-    fn change(v : & i32)
+    //x az beyn khahad raft va hamchenin refrence of x
+    //pas v inja dar be refrence ke nist eshare mikone
+    println!("v: {}", v);
+
+    fn change(i : & i32)
     {
         let x: i32 = 42;
-        v = &x;
+        i = &x;
     }
 }
 ```
@@ -160,6 +153,9 @@ fn main()
             s2
         }
     }
+    // akhare in function parametr ha yani s1 va s2 az beyn khahan raft
+    // pas to dari chi ro return mikoni ?
+    // bayad ye kari konim s1 va s2 zende bemonan
 }
 ```
 
