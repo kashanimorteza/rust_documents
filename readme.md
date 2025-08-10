@@ -121,7 +121,6 @@ Compound
     Vector
     Refrence
     DeRefrence
-    Life time
     Pointer
     Smart poiner
     
@@ -200,6 +199,13 @@ Compound
 <br><br>
 
 ## Borrowing
+
+
+
+<!--------------------------------------------------------------------------------- LifeTime -->
+<br><br>
+
+## LifeTime
 
 
 
