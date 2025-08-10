@@ -148,3 +148,58 @@ fn main()
     }
 }
 ```
+
+```rust
+fn main() 
+{
+    struct Book<'a>
+    {
+        title: &'a str,
+        author: &'a str,
+    }
+
+    impl Book
+    {
+        fn print()
+        {
+            println!("Book: {} by {}", book.title, book.author);
+        }
+    }
+
+
+    let title = String::from("The Great Gatsby");
+    let author = String::from("F. Scott Fitzgerald");
+    let book = Book{title: &title, author: &author};
+    println!("Book: {} by {}", book.title, book.author);
+    println!("title: {}", title);
+    println!("author: {}", author);
+}
+```
+
+```rust
+fn main() 
+{
+    struct Book<'a>
+    {
+        title: &'a str,
+        author: &'a str,
+    }
+
+    impl Book<'_>
+    {
+        fn display<'a>(&self)
+        {
+            println!("Book: {} by {}", self.title, self.author);
+        }
+    }
+
+    let title = String::from("The Great Gatsby");
+    let author = String::from("F. Scott Fitzgerald");
+    let book = Book{title: &title, author: &author};
+    book.display();
+}
+```
+
+```rust
+
+```
