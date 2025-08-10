@@ -172,10 +172,10 @@ fn main()
 
 
 
-<!--------------------------------------------------------------------------------- Resolve -->
+<!--------------------------------------------------------------------------------- Function -->
 <br><br>
 
-## Resolve
+## Function
 ```rust
 fn main() 
 {
@@ -197,7 +197,103 @@ fn main()
     }
 }
 ```
+```rust
+fn main() 
+{
+    
+    let str1 = String::from("aaa");
+    let str2 = String::from("bbbbbbbbb");
+    let result = fn_2(&str1, &str2);
+    println!("fn_1: {}", result);
 
+    fn fn_2<'a>(s1: &'a str, s2: &str) -> &'a str 
+    {
+        s1
+    }
+}
+```
+```rust
+fn main() 
+{
+    let str1 = String::from("aaa");
+    let str2 = String::from("bbbbbbbbb");
+    let result = fn_2(&str1, &str2);
+    println!("fn_1: {}", result);
+
+    fn fn_2<'a>(s1: &str, s2: &str) -> &'a str 
+    {
+        let result = String::from("really long string");
+        result.as_str()
+    }
+}
+```
+```rust
+fn main() 
+{
+    let my_string = String::from("hello world");
+    let word = first_word(&my_string[..]);
+    println!("word: {}", word);
+
+    fn first_word(s: &str) -> &str 
+    {
+        let bytes = s.as_bytes();
+        for (i, &item) in bytes.iter().enumerate() 
+        {
+            if item == b' ' 
+            {
+                return &s[0..i];
+            }
+        }
+        &s[..]
+    }
+}
+```
+```rust
+fn main() 
+{
+    let my_string_literal = "hello world";
+    let word1 = first_word(&my_string_literal[..]);
+    let word2 = first_word(my_string_literal);
+
+    println!("word1: {}", word1);
+    println!("word2: {}", word2);
+
+    fn first_word(s: &str) -> &str 
+    {
+        let bytes = s.as_bytes();
+        for (i, &item) in bytes.iter().enumerate() 
+        {
+            if item == b' ' 
+            {
+                return &s[0..i];
+            }
+        }
+        &s[..]
+    }
+}
+```
+```rust
+use std::fmt::Display;
+fn main() 
+{
+    let string1 = String::from("abcd");
+    let string2 = "xyz";
+    let result = longest(string1.as_str(), string2, "Today is someone's birthday!");
+    println!("The longest string is {result}");
+
+    fn longest<'a, T>(
+        x: &'a str,
+        y: &'a str,
+        ann: T,
+    ) -> &'a str
+    where
+        T: Display,
+    {
+        println!("Announcement! {ann}");
+        if x.len() > y.len() { x } else { y }
+    }
+}
+```
 
 
 <!--------------------------------------------------------------------------------- Struct -->
@@ -252,4 +348,31 @@ fn main()
     let book = Book{title: &title, author: &author};
     book.display();
 }
+```
+
+<!--------------------------------------------------------------------------------- Static -->
+<br><br>
+
+## Static
+```rust
+fn main() 
+{
+    let s: &'static str = "I have a static lifetime.";
+    println!("s: {}", s);
+}   
+```
+```rust
+fn main() 
+{
+    let str1: &'static str = "aaa";
+    let str2: &'static str = "bbbbbbbbb";
+    let result = fn_2(str1, str2);
+    println!("fn_1: {}", result);
+
+    fn fn_2(s1: &'static str, s2: &'static str) -> &'static str 
+    {
+        if s1.len() >= s2.len() { s1 } else { s2 }
+    }
+}
+
 ```
