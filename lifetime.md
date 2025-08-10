@@ -12,7 +12,7 @@
 <br><br>
 
 ## Base
-Error : Because the reference doesn't point to anywhere.
+Error | Because the reference doesn't point to anywhere.
 ```rust
 fn main() 
 {
@@ -20,7 +20,7 @@ fn main()
     println!("v: {}", v);
 }
 ```
-Ok : Because the reference points to the value 1 at first
+Ok | Because the reference points to the value 1 at first
 ```rust
 fn main() 
 {
@@ -31,7 +31,7 @@ fn main()
     println!("v2: {}", v);
 }
 ```
-Ok : Because the reference points to the value 2 : Copy ownership : Value
+Ok | Because the reference points to the value 2 | Copy ownership | Value
 ```rust
 fn main() 
 {
@@ -44,7 +44,7 @@ fn main()
     println!("v3: {}", v);
 }
 ```
-Ok : Because the reference points to the value x : Copy ownership : Variable
+Ok | Because the reference points to the value x | Copy ownership | Variable
 ```rust
 fn main() 
 {
@@ -58,7 +58,7 @@ fn main()
     println!("v3: {}", v);
 }
 ```
-Ok : Because the reference points to the value return : Transfer ownership : Return variable
+Ok | Because the reference points to the value return | Transfer ownership | Return variable
 ```rust
 fn main() 
 {
@@ -83,7 +83,7 @@ fn main()
     }
 }
 ```
-Ok : Because the reference points to the value return : Transfer ownership : Return variable
+Ok | Because the reference points to the value return | Transfer ownership | Return variable
 ```rust
 fn main() 
 {
