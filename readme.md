@@ -242,7 +242,6 @@ Compound
 <br><br>
 
 ## Concurrency
-    Race conditions | Deadlocks
     Process
     Threads
     Spawn
@@ -250,6 +249,7 @@ Compound
     Channel
     Shared-State
     Mutex
+    Race conditions | Deadlocks
 
 
 

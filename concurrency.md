@@ -1,7 +1,16 @@
 # Concurrency
-    All example about concurrency
-    
-    When an individual works on several different tasks before any of them is complete, this is concurrency
+
+    Process
+    Threads
+    Spawn
+    Move
+    Channel
+    Shared-State
+    Mutex
+    Race conditions | Deadlocks
+
+    Concurrency:
+        When an individual works on several different tasks before any of them is complete
 
     Process:
         In most current operating systems, an executed program’s code is run in a process
@@ -25,22 +34,24 @@
 ## Spawn
 
 ```rust
-use std::thread;
-use std::time::Duration;
-
 fn main() 
 {
-    thread::spawn(|| {
-        for i in 1..10 
+    use std::thread;
+    use std::time::Duration;
+
+    thread::spawn(|| 
         {
-            println!("hi number {i} from the spawned thread!");
-            thread::sleep(Duration::from_millis(1));
+            for i in 1..10 
+            {
+                println!("spawn: {i}");
+                thread::sleep(Duration::from_millis(1));
+            }
         }
-    });
+    );
 
     for i in 1..5 
     {
-        println!("hi number {i} from the main thread!");
+        println!("main: {i}");
         thread::sleep(Duration::from_millis(1));
     }
 }
