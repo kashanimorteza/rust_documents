@@ -1,9 +1,7 @@
 # Concurrency
 
     Process
-    Threads
-    Spawn
-    Move
+    Threads : Spawn, Move
     Channel
     Shared-State
     Mutex
@@ -99,7 +97,7 @@ fn main()
 }
 ```
 
-Join Handles
+Join
 ```rust
 fn main() 
 {
@@ -147,7 +145,7 @@ fn main()
 }
 ```
 
-Using move Closures with Threads
+Move
 ```rust
 fn main() 
 {
@@ -171,13 +169,11 @@ fn main()
     
     let v = vec![1, 2, 3];
 
-    let handle = thread::spawn(|| 
+    let handle = thread::spawn(move|| 
         {
             println!("Here's a vector: {v:?}");
         }
     );
-
-    drop(v); // oh no!
 
     handle.join().unwrap();
 }
@@ -186,16 +182,36 @@ fn main()
 fn main() 
 {
     use std::thread;
-
     let v = vec![1, 2, 3];
-
     let handle = thread::spawn(move || 
         {
-        println!("Here's a vector: {v:?}");
+            for num in v
+            {
+                println!("n: {}", num);
+            }
+            
         }
     );
-
     handle.join().unwrap();
+    //println!("Here's a vector: {v:?}");
+}
+```
+```rust
+fn main() 
+{
+    use std::thread;
+    let v = vec![1, 2, 3];
+    let handle = thread::spawn(|| 
+        {
+            for num in v
+            {
+                println!("n: {}", num);
+            }
+            
+        }
+    );
+    handle.join().unwrap();
+    //println!("Here's a vector: {v:?}");
 }
 ```
 

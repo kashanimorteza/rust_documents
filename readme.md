@@ -243,9 +243,7 @@ Compound
 
 ## Concurrency
     Process
-    Threads
-    Spawn
-    Move
+    Threads : Spawn, Move
     Channel
     Shared-State
     Mutex
