@@ -1,20 +1,17 @@
 # Function
     Rust code uses snake case as the conventional style for function and variable names
 
-
     Function
-    Associated Function
-    Generic
-    Traits
     Closure
     Iterators
+    Associated Function
 
 
 
-<!--------------------------------------------------------------------------------- Simple -->
+<!--------------------------------------------------------------------------------- Base -->
 <br><br>
 
-## Simple
+## Base
 Function
 ```rust
 fn main() 
@@ -92,88 +89,45 @@ fn fn_5(x: i8) -> i8
 
 
 
-<!--------------------------------------------------------------------------------- Associated Function -->
-<br><br>
-
-## Associated Function
-
-
-
-<!--------------------------------------------------------------------------------- Generic -->
-<br><br>
-
-## Generic
-
-
-
-<!--------------------------------------------------------------------------------- Traits -->
-<br><br>
-
-## Traits
-
-
-
 <!--------------------------------------------------------------------------------- Closure -->
 <br><br>
 
 ## Closure
 
+    Rust’s closures are anonymous functions you can save in a variable or pass as arguments to other functions
+
 ```rust
 fn main() 
 {
-    let fn_1 = |v: u8| v + 1;
-
-    let fn_1_result = fn_1(10);
-    println!("fn_1: {}", fn_1_result);
-
-    let fn_2_result = fn_2(10);
-    println!("fn_2: {}", fn_2_result);
-}
-
-fn fn_2(v: u8) -> u8
-{
-    return v+1;
+    let fn_1 = || println!("This is Closure without parameter");
+    fn_1();
 }
 ```
-
 ```rust
 fn main() 
 {
-    let discount:f64 = 0.1;
-    let apply_discount = |v: f64 | v - discount;
-    println!("apply_discount : {}$", apply_discount(50.0));
+    let fn_1 = | v:u8 | println!("This is Closure with parameter {}", v);
+    fn_1(1);
 }
 ```
-
 ```rust
 fn main() 
 {
-    let mut discount:f64 = 0.1;
+    let fn_1 = | v:u8 | 
     {
-        discount +=0.1;
-    }
-    let apply_discount = |v: f64 | v - discount;
-    println!("apply_discount : {}$", apply_discount(50.0));
-}
-```
-
-```rust
-fn main() 
-{
-    let discount:f64 = 0.1;
-    let apply_discount = |v: f64 | {
-        println!("Price : {}$", v);
-        println!("apply_discount : {}$", v - discount);
+        println!("This is Closure with parameter {}", v);
+        println!("This is Closure with parameter {}", v);
+        println!("This is Closure with parameter {}", v);
     };
-    apply_discount(50.0);
+    fn_1(1);
 }
 ```
-
 ```rust
 fn main() 
 {
     let mut visitor_count:u8 = 0;
-    let mut add_visitor = || {
+    let mut add_visitor = || 
+    {
         visitor_count +=1;
         println!("new visitor... total : {}", visitor_count);
     };
@@ -183,15 +137,15 @@ fn main()
     add_visitor();
 }
 ```
-
 ```rust
-struct Product {
-    name: String,
-    price: f64,
-}
-
 fn main() 
 {
+    struct Product 
+    {
+        name: String,
+        price: f64,
+    }
+
     let min_price:f64 = 100.0;
 
     let products = vec![
@@ -362,3 +316,10 @@ fn main() {
     println!("Sum using iter(): {} Time taken: {:?}", sum, duration);
 }
 ```
+
+
+
+<!--------------------------------------------------------------------------------- Associated Function -->
+<br><br>
+
+## Associated Function

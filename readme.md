@@ -172,10 +172,9 @@ Compound
 
 ## Function
     Function
-    Associated Function
-    Traits
     Closure
     Iterators
+    Associated Function
 
 
 
