@@ -24,7 +24,6 @@ fn fn_1()
     println!("fn_1");
 }
 ```
-
 Parameters
 ```rust
 fn main() 
@@ -37,7 +36,6 @@ fn fn_2(x: i8)
     println!("fn_2 {}", x);
 }
 ```
-
 ```rust
 fn main() 
 {
@@ -49,7 +47,6 @@ fn fn_1(p1: i32, p2: char)
     println!("p1: {} p2:{}", p1, p2);
 }
 ```
-
 Return Values
 ```rust
 fn main() 
@@ -72,7 +69,6 @@ fn fn_2() -> i8
     9
 }
 ```
-
 Parameters | Return Values
 ```rust
 fn main() 
@@ -218,10 +214,10 @@ impl<T> Option<T>
 
 
 
-<!--------------------------------------------------------------------------------- Iterators -->
+<!--------------------------------------------------------------------------------- Iterator -->
 <br><br>
 
-## Iterators
+## Iterator
 
 next
 ```rust
@@ -237,7 +233,6 @@ fn main()
     println!("number : {:?}", iter.next());
 }
 ```
-
 filter
 ```rust
 struct Product {
@@ -266,7 +261,6 @@ fn main()
     }
 }
 ```
-
 map
 ```rust
 fn main() {
@@ -282,7 +276,6 @@ fn main() {
     println!("Prices after tax: {:?}", taxed_price);
 }
 ```
-
 sum
 ```rust
 fn main() {
@@ -291,7 +284,6 @@ fn main() {
     println!("Total: {}$", total);
 }
 ```
-
 take
 ```rust
 fn main() {
@@ -300,7 +292,6 @@ fn main() {
     println!("First three payments: {:?}", first_three);
 }
 ```
-
 filtre + map + sum
 ```rust
 struct Order {
@@ -324,7 +315,6 @@ fn main() {
     println!("Total completed amount: {}", total_completed);
 }
 ```
-
 check time
 ```rust
 use std::time::Instant;
@@ -337,7 +327,6 @@ fn main() {
     println!("Sum using iter(): {} Time taken: {:?}", sum, duration);
 }
 ```
-
 for
 ```rust
 use std::time::Instant;
@@ -354,7 +343,6 @@ fn main() {
     println!("Sum using iter(): {} Time taken: {:?}", sum, duration);
 }
 ```
-
 par_iter
 ```rust
 use std::time::Instant;
