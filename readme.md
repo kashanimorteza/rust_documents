@@ -106,6 +106,7 @@ Compound
     Array
     Custom : Structs, Enums
     String
+    Slice
     Collection
     Pointer and Reference
     Miscellaneous
@@ -194,7 +195,7 @@ Compound
 <br><br>
 
 ## Ownership
-
+    RC : Reference Counted smart pointer
 
 
 
@@ -209,6 +210,17 @@ Compound
 <br><br>
 
 ## LifeTime
+
+
+
+<!--------------------------------------------------------------------------------- Smart pointer -->
+<br><br>
+
+## Smart pointer
+    Box
+    Deref
+    Wrapper
+    Dynamic box 
 
 
 
@@ -283,14 +295,7 @@ Compound
     Crate-level
 
 
-<!--------------------------------------------------------------------------------- Smart pointer -->
-<br><br>
 
-## Smart pointer
-    Box
-    Deref
-    Wrapper
-    Dynamic box 
 
 
 

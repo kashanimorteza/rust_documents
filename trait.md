@@ -381,3 +381,29 @@ impl<T: Display> ToString for T
     // --snip--
 }
 ```
+Drop
+```rust
+fn main() 
+{
+    {
+        println!("Creating st1");
+        let _st = ST;
+        drop(_st);
+    }
+
+    println!("Creating st");
+    let _st = ST;
+
+    println!("Finish Main");
+}
+
+struct  ST;
+
+impl Drop for ST 
+{
+    fn drop(&mut self) 
+    {
+        println!("Dropping st");
+    }
+}
+```
