@@ -125,16 +125,8 @@ fn main()
 ```rust
 fn main() 
 {
-    let mut visitor_count:u8 = 0;
-    let mut add_visitor = || 
-    {
-        visitor_count +=1;
-        println!("new visitor... total : {}", visitor_count);
-    };
-    add_visitor();
-    add_visitor();
-    add_visitor();
-    add_visitor();
+    let fn_1 = | v:u8 | ->u8 {v+1};
+    println!("fn_1: {}", fn_1(1));
 }
 ```
 ```rust
@@ -160,6 +152,66 @@ fn main()
     for product in new_products
     {
         println!("{} - {}$", product.name, product.price);
+    }
+}
+```
+Borrowing immutably
+```rust
+fn main() 
+{
+    let list = vec![1, 2, 3];
+    
+    println!("Before defining closure: {list:?}");
+
+    let mut borrows_mutably = || list.push(7);
+
+    println!("Before calling closure: {list:?}");
+
+    only_borrows();
+    
+    println!("After calling closure: {list:?}");
+}
+```
+Borrowing mutably
+```rust
+fn main() 
+{
+    let mut list = vec![1, 2, 3];
+    
+    println!("Before defining closure: {list:?}");
+
+    let mut borrows_mutably = || list.push(7);
+
+    //println!("Before calling closure: {list:?}");
+
+    borrows_mutably();
+
+    println!("After calling closure: {list:?}");
+}
+```
+Taking ownership
+```rust
+use std::thread;
+fn main() {
+    let list = vec![1, 2, 3];
+    println!("Before defining closure: {list:?}");
+    thread::spawn(move || println!("From thread: {list:?}")).join().unwrap();
+    //println!("After calling closure: {list:?}");
+}
+```
+Moving Captured Values Out of Closures and the Fn Traits
+```rust
+impl<T> Option<T> 
+{
+    pub fn unwrap_or_else<F>(self, f: F) -> T
+    where
+        F: FnOnce() -> T
+    {
+        match self 
+        {
+            Some(x) => x,
+            None => f(),
+        }
     }
 }
 ```
