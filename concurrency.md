@@ -28,11 +28,53 @@
 
 
 
-<!--------------------------------------------------------------------------------- Spawn -->
+<!--------------------------------------------------------------------------------- Threads -->
 <br><br>
 
-## Spawn
+## Threads
+Simple
+```rust
+fn main() 
+{
+    use std::thread;
 
+    thread::spawn(|| 
+        {
+            for i in 1..10 
+            {
+                println!("spawn: {i}");
+            }
+        }
+    );
+
+    for i in 1..6 
+    {
+        println!("main : {i}");
+    }
+}
+```
+```rust
+fn main() 
+{
+    use std::thread;
+    use std::time::Duration;
+
+    thread::spawn(|| 
+        {
+            for i in 1..10 
+            {
+                println!("spawn: {i}");
+            }
+        }
+    );
+
+    for i in 1..6 
+    {
+        println!("main : {i}");
+        thread::sleep(Duration::from_millis(1));
+    }
+}
+```
 ```rust
 fn main() 
 {
@@ -51,105 +93,107 @@ fn main()
 
     for i in 1..5 
     {
-        println!("main: {i}");
+        println!("main : {i}");
         thread::sleep(Duration::from_millis(1));
     }
 }
 ```
 
-Waiting for All Threads to Finish Using join Handles
+Join Handles
 ```rust
-use std::thread;
-use std::time::Duration;
-
 fn main() 
 {
-    let handle = thread::spawn(|| {
-        for i in 1..10 
+    use std::thread;
+
+    let handle = thread::spawn(|| 
         {
-            println!("hi number {i} from the spawned thread!");
-            thread::sleep(Duration::from_millis(1));
+            for i in 1..10 
+            {
+                println!("spawn: {i}");
+            }
         }
-    });
+    );
 
     for i in 1..5 
     {
-        println!("hi number {i} from the main thread!");
-        thread::sleep(Duration::from_millis(1));
+        println!("main : {i}");
     }
 
     handle.join().unwrap();
 }
 ```
-
-The thread currently running until the thread represented by the handle terminates
 ```rust
-use std::thread;
-use std::time::Duration;
-
 fn main() 
 {
-    let handle = thread::spawn(|| {
-        for i in 1..10 
+    use std::thread;
+    use std::time::Duration;
+
+    let handle = thread::spawn(|| 
         {
-            println!("hi number {i} from the spawned thread!");
-            thread::sleep(Duration::from_millis(1));
+            for i in 1..10
+            {
+                println!("spawn: {i}");
+            }
         }
-    });
+    );
 
-    handle.join().unwrap();
-
-    for i in 1..5 
+    for i in 1..6
     {
-        println!("hi number {i} from the main thread!");
+        println!("main : {i}");
         thread::sleep(Duration::from_millis(1));
     }
+
+    handle.join().unwrap();
 }
 ```
 
 Using move Closures with Threads
 ```rust
-use std::thread;
-
 fn main() 
 {
+    use std::thread;
+    
     let v = vec![1, 2, 3];
 
-    let handle = thread::spawn(|| {
-        println!("Here's a vector: {v:?}");
-    });
+    let handle = thread::spawn(|| 
+        {
+            println!("Here's a vector: {v:?}");
+        }
+    );
 
     handle.join().unwrap();
 }
 ```
-
 ```rust
-use std::thread;
-
 fn main() 
 {
+    use std::thread;
+    
     let v = vec![1, 2, 3];
 
-    let handle = thread::spawn(|| {
-        println!("Here's a vector: {v:?}");
-    });
+    let handle = thread::spawn(|| 
+        {
+            println!("Here's a vector: {v:?}");
+        }
+    );
 
     drop(v); // oh no!
 
     handle.join().unwrap();
 }
 ```
-
 ```rust
-use std::thread;
-
 fn main() 
 {
+    use std::thread;
+
     let v = vec![1, 2, 3];
 
-    let handle = thread::spawn(move || {
+    let handle = thread::spawn(move || 
+        {
         println!("Here's a vector: {v:?}");
-    });
+        }
+    );
 
     handle.join().unwrap();
 }
