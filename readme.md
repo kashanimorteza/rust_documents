@@ -47,6 +47,13 @@ echo $HOME/.cargo/env >> $HOME/.zshrc
 
 Linux
 ```bash
+sudo apt update && sudo apt upgrade -y
+sudo apt install build-essential pkg-config libssl-dev -y
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+source $HOME/.cargo/env
+rustc --version
+cargo --version
+rustup update
 ```
 
 Windows
