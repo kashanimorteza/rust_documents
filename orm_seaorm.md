@@ -1,13 +1,5 @@
 
 # ORM : SeaORM 
-    All example about SeaORM
-
-
-
-<!--------------------------------------------------------------------------------- Structure -->
-<br><br>
-
-## Structure
     Migration
     Entities
     CRUD
@@ -24,6 +16,7 @@ Cargo
 cargo add anyhow
 cargo add tokio
 cargo add sea-orm --no-default-features --features sqlx-mysql,sqlx-postgres,sqlx-sqlite,runtime-async-std-rustls,runtime-tokio-rustls,macros,debug-print,seaography,with-uuid,with-chrono,with-json,with-bigdecimal,with-time
+cargo add sea-orm-migration --no-default-features --features "sqlx-mysql,sqlx-postgres,sqlx-sqlite,runtime-tokio-rustls"
 cargo install sea-orm-cli --force --no-default-features --features "cli,codegen,sqlx-mysql,sqlx-postgres,sqlx-sqlite,runtime-tokio-rustls,runtime-async-std-rustls,async-std"
 ```
 
@@ -66,12 +59,60 @@ version = "1.1.14"
 features = ["sqlx-mysql","sqlx-postgres","sqlx-sqlite","runtime-tokio-rustls"]
 ```
 
-Generate
+Create migration
 ```bash
-sea-orm-cli migrate generate create_users_table
+sea-orm-cli migrate generate create_device_command
+```
+
+Status
+```bash
+sea-orm-cli migrate up
 ```
 
 Status
 ```bash
 sea-orm-cli migrate status
+```
+
+example
+```rust
+use sea_orm_migration::{prelude::*, schema::*};
+
+#[derive(DeriveMigrationName)]
+pub struct Migration;
+
+#[async_trait::async_trait]
+impl MigrationTrait for Migration {
+    async fn up(&self, manager: &SchemaManager) -> Result<(), DbErr> {
+        manager
+            .create_table(
+                Table::create()
+                    .table(Post::Table)
+                    .if_not_exists()
+                    .col(pk_auto(Post::Id))
+                    .col(string(Post::Title))
+                    .col(string(Post::Text))
+                    .to_owned(),
+            )
+            .await
+    }
+
+    async fn down(&self, manager: &SchemaManager) -> Result<(), DbErr> {
+        manager
+            .drop_table(
+                Table::drop()
+                    .table(Post::Table)
+                    .to_owned()
+            )
+            .await
+    }
+}
+
+#[derive(DeriveIden)]
+enum Post {
+    Table,
+    Id,
+    Title,
+    Text,
+}
 ```
