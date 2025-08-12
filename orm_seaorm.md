@@ -21,45 +21,10 @@
 
 Cargo
 ```bash
-cargo add tokio
 cargo add anyhow
-cargo add sea-orm --no-default-features features sqlx-mysql,sqlx-postgres,sqlx-sqlite,runtime-async-std-rustls,runtime-tokio-rustls,macros,debug-print,seaography,with-uuid,with-chrono,with-json,with-bigdecimal,with-time
-cargo add sea-orm-migration --no-default-features --features sqlx-mysql,sqlx-postgres,sqlx-sqlite,runtime-tokio-rustls
+cargo add tokio
+cargo add sea-orm --no-default-features --features sqlx-mysql,sqlx-postgres,sqlx-sqlite,runtime-async-std-rustls,runtime-tokio-rustls,macros,debug-print,seaography,with-uuid,with-chrono,with-json,with-bigdecimal,with-time
 cargo install sea-orm-cli --force --no-default-features --features "cli,codegen,sqlx-mysql,sqlx-postgres,sqlx-sqlite,runtime-tokio-rustls,runtime-async-std-rustls,async-std"
-```
-
-Dependencies
-```toml
-[dependencies]
-anyhow = "1.0.98"
-dotenvy = "0.15.7"
-tokio = { version = "1", features = ["full"] }
-sea-orm = { version = "1.1.14", default-features = false, features = [
-    "sqlx-mysql",
-    "sqlx-postgres",
-    "sqlx-sqlite",
-    "runtime-async-std-rustls",
-    "runtime-tokio-rustls",
-    "macros",
-    "debug-print",
-    "seaography",
-    "with-uuid",
-    "with-chrono",
-    "with-json",
-    "with-bigdecimal",
-    "with-time"
-] }
-sea-orm-migration = { version = "1.1.14", default-features = false, features = [
-    "sqlx-mysql",
-    "sqlx-postgres",
-    "sqlx-sqlite",
-    "runtime-tokio-rustls"
-] }
-```
-
-Build
-```bash
-cargo run
 ```
 
 ENV
@@ -67,8 +32,7 @@ ENV
 cat << 'EOF' > .env
 #---------------------------------------------------------------------------------DATABASE
 #----------------------------------------SQLITE
-DATABASE_SQLITE_URL=sqlite://db.sqlite
-#DATABASE_SQLITE_URL=sqlite://db.sqlite?mode=rwc
+DATABASE_SQLITE_URL=sqlite://db.sqlite?mode=rwc
 #DATABASE_SQLITE_URL=sqlite::memory:
 
 #----------------------------------------POSTGRESQL
@@ -84,14 +48,6 @@ DATABASE_URL=${DATABASE_SQLITE_URL}
 EOF
 ```
 
-Check
-```bash
-sea-orm-cli --version
-which sea-orm-cli
-sea-orm-cli migrate status -u sqlite://db.sqlite
-```
-
-
 
 <!--------------------------------------------------------------------------------- Migration -->
 <br><br>
@@ -102,15 +58,20 @@ Init
 ```bash
 sea-orm-cli migrate init 
 ```
+
+./migration/cargo.toml
+```toml
+[dependencies.sea-orm-migration]
+version = "1.1.14"
+features = ["sqlx-mysql","sqlx-postgres","sqlx-sqlite","runtime-tokio-rustls"]
+```
+
 Generate
 ```bash
 sea-orm-cli migrate generate create_users_table
 ```
+
 Status
 ```bash
 sea-orm-cli migrate status
 ```
-
-
-
-
