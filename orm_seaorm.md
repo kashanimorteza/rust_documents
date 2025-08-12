@@ -25,7 +25,7 @@ cargo add tokio
 cargo add anyhow
 cargo add sea-orm --no-default-features features sqlx-mysql,sqlx-postgres,sqlx-sqlite,runtime-async-std-rustls,runtime-tokio-rustls,macros,debug-print,seaography,with-uuid,with-chrono,with-json,with-bigdecimal,with-time
 cargo add sea-orm-migration --no-default-features --features sqlx-mysql,sqlx-postgres,sqlx-sqlite,runtime-tokio-rustls
-cargo install sea-orm-cli --force --no-default-features --features sqlx-mysql,sqlx-postgres,sqlx-sqlite,runtime-tokio-rustls
+cargo install sea-orm-cli --force --no-default-features --features "cli,codegen,sqlx-mysql,sqlx-postgres,sqlx-sqlite,runtime-tokio-rustls,runtime-async-std-rustls,async-std"
 ```
 
 Dependencies
@@ -82,6 +82,13 @@ DATABASE_POSTGRESQL_URL=postgres://${DATABASE_POSTGRESQL_USER}:${DATABASE_POSTGR
 DATABASE_URL=${DATABASE_SQLITE_URL}
 #DATABASE_URL=${DATABASE_POSTGRESQL_URL}
 EOF
+```
+
+Check
+```bash
+sea-orm-cli --version
+which sea-orm-cli
+sea-orm-cli migrate status -u sqlite://db.sqlite
 ```
 
 
