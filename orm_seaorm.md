@@ -1,7 +1,7 @@
 
 # ORM : SeaORM 
     Migration
-    Entities
+    Entity
     CRUD
 
 
@@ -14,7 +14,8 @@
 Cargo
 ```bash
 cargo add anyhow
-cargo add tokio
+cargo add tokio --features macros,rt-multi-thread
+cargo add tokio --features full
 cargo add sea-orm --no-default-features --features sqlx-mysql,sqlx-postgres,sqlx-sqlite,runtime-async-std-rustls,runtime-tokio-rustls,macros,debug-print,seaography,with-uuid,with-chrono,with-json,with-bigdecimal,with-time
 cargo add sea-orm-migration --no-default-features --features "sqlx-mysql,sqlx-postgres,sqlx-sqlite,runtime-tokio-rustls"
 cargo install sea-orm-cli --force --no-default-features --features "cli,codegen,sqlx-mysql,sqlx-postgres,sqlx-sqlite,runtime-tokio-rustls,runtime-async-std-rustls,async-std"
@@ -116,3 +117,23 @@ enum Post {
     Text,
 }
 ```
+
+
+
+<!--------------------------------------------------------------------------------- Entity -->
+<br><br>
+
+## Entity
+
+Create
+
+    sea-orm-cli generate entity -u sqlite://db.sqlite -o src/entity
+
+
+
+<!--------------------------------------------------------------------------------- CRUD -->
+<br><br>
+
+## CRUD
+Select
+    ss
