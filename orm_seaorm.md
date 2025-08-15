@@ -70,12 +70,12 @@ Status
 sea-orm-cli migrate up
 ```
 
-Status
+Structure 1
 ```bash
 sea-orm-cli migrate status
 ```
 
-example
+Structure 2
 ```rust
 use sea_orm_migration::{prelude::*, schema::*};
 
@@ -115,6 +115,40 @@ enum Post {
     Id,
     Title,
     Text,
+}
+```
+
+```rust
+use sea_orm_migration::prelude::*;
+
+#[derive(DeriveMigrationName)]
+pub struct Migration;
+
+#[async_trait::async_trait]
+impl MigrationTrait for Migration {
+    async fn up(&self, manager: &SchemaManager) -> Result<(), DbErr> {
+        let sql = r#"
+            CREATE TABLE device_command (
+                id INTEGER PRIMARY KEY,
+                device_id INTEGER NOT NULL,
+                name VARCHAR,
+                value_from INTEGER,
+                value_to INTEGER,
+                delay INTEGER,
+                description VARCHAR,
+                reload BOOLEAN,
+                enable BOOLEAN,
+                type VARCHAR(7) NOT NULL
+            );
+        "#;
+        manager.get_connection().execute_unprepared(sql).await?;
+        Ok(())
+    }
+
+    async fn down(&self, manager: &SchemaManager) -> Result<(), DbErr> {
+        manager.get_connection().execute_unprepared("DROP TABLE device_command;").await?;
+        Ok(())
+    }
 }
 ```
 
