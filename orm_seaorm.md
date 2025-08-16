@@ -161,6 +161,7 @@ impl MigrationTrait for Migration {
 
 Create
 
+    sea-orm-cli generate entity -u postgres://postgres:123456@192.168.64.7:5432/raspberrypi -o src/entity
     sea-orm-cli generate entity -u sqlite://db.sqlite -o src/entity
 
 
