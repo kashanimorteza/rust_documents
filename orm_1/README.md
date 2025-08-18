@@ -54,3 +54,14 @@ Entity
 ```bash
 sea-orm-cli generate entity -u postgres://postgres:123456@192.168.64.9:5432/db_orm_1 -o src/models
 ```
+
+
+
+<!--------------------------------------------------------------------------------- Run -->
+<br><br>
+
+# Run
+```bash
+cd orm_1
+cargo run
+```
