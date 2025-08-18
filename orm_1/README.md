@@ -45,17 +45,9 @@ PGPASSWORD='123456' psql -U postgres -h 192.168.64.9 -d db_orm_1 -f db_postgres.
 <!------------------------- Entity -->
 Install
 ```bash
-
-
-
-
-
-cargo add anyhow
-cargo add tokio --features macros,rt-multi-thread
+cargo add dotenvy
 cargo add tokio --features full
 cargo add sea-orm --no-default-features --features sqlx-mysql,sqlx-postgres,sqlx-sqlite,runtime-async-std-rustls,runtime-tokio-rustls,macros,debug-print,seaography,with-uuid,with-chrono,with-json,with-bigdecimal,with-time
-cargo install sea-orm-cli --force --no-default-features --features "cli,codegen,sqlx-mysql,sqlx-postgres,sqlx-sqlite,runtime-tokio-rustls,runtime-async-std-rustls,async-std"
-cargo add sea-orm-migration --no-default-features --features "sqlx-mysql,sqlx-postgres,sqlx-sqlite,runtime-tokio-rustls"
 ```
 <!------------------------- Entity -->
 Entity
