@@ -8,7 +8,7 @@
 pub use sea_orm::entity::prelude::*;
 pub use sea_orm::Database;
 pub mod models;
-pub mod logics;
+pub mod orm;
 pub use sea_orm::{EntityTrait, DbConn, DbErr};
 pub use models::user::{Entity as UserEntity, Model as UserModel, ActiveModel as UserActiveModel};
 use sea_orm::ActiveValue::Set;

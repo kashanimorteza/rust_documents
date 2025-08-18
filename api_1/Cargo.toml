@@ -4,6 +4,7 @@ version = "0.1.0"
 edition = "2024"
 
 [dependencies]
+axum = "0.8.4"
 dotenvy = "0.15.7"
 sea-orm = { version = "1.1.14", default-features = false, features = ["sqlx-mysql", "sqlx-postgres", "sqlx-sqlite", "runtime-async-std-rustls", "runtime-tokio-rustls", "macros", "debug-print", "seaography", "with-uuid", "with-chrono", "with-json", "with-bigdecimal", "with-time"] }
 tokio = { version = "1.47.1", features = ["full"] }
