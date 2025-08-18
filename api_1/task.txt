@@ -1,0 +1,7 @@
+structure of Axum are :
+Route | Handler | Extractors | Middlewares | State Management
+
+my model exist on : src/models
+my logic exist on : src/logics
+
+generate api with axum for all models and logics
