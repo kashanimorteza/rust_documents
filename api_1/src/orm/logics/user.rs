@@ -116,6 +116,54 @@ impl UserORM
         }
     }
 
+    //-------------------------- [Item]
+    pub async fn item(&self, db: &DbConn, id: i32) -> ModelOutput<UserModel> 
+    {
+        let this_method = "item";
+        
+        if self.verbose 
+        {
+            debug!("{}::{} - Starting item operation for id: {}", self.this_class, this_method, id);
+        }
+
+        match UserEntity::find_by_id(id).one(db).await 
+        {
+            Ok(Some(user)) => 
+            {
+                let output = ModelOutput::success(user, "User retrieved successfully".to_string());
+                if self.verbose 
+                {
+                    info!("{}::{} - Success: User {} found", self.this_class, this_method, id);
+                }
+                if self.log 
+                {
+                    info!("LOG: {}::{} - User {} retrieved", self.this_class, this_method, id);
+                }
+                output
+            }
+            Ok(None) => 
+            {
+                let output = ModelOutput::error("User not found".to_string());
+                if self.verbose 
+                {
+                    info!("{}::{} - User {} not found", self.this_class, this_method, id);
+                }
+                output
+            }
+            Err(e) => 
+            {
+                let error_msg = format!("Database error in {}::{}: {}", self.this_class, this_method, e);
+                let output = ModelOutput::error(error_msg.clone());
+                error!("{}::{} - Error: {}", self.this_class, this_method, error_msg);
+                if self.log 
+                {
+                    error!("LOG: {}::{} - Error: {}", self.this_class, this_method, error_msg);
+                }
+                output
+            }
+        }
+    }
+
     //-------------------------- [Update]
     pub async fn update(&self, db: &DbConn, item: UserActiveModel) -> ModelOutput<UserModel> 
     {
@@ -261,6 +309,70 @@ impl UserORM
                 let error_msg = format!("Database error in {}::{}: {}", self.this_class, this_method, e);
                 let output = ModelOutput::error(error_msg.clone());
                 error!("{}::{} - Error: {}", self.this_class, this_method, error_msg);
+                output
+            }
+        }
+    }
+
+    //-------------------------- [Enable]
+    pub async fn enable(&self, db: &DbConn, id: i32) -> ModelOutput<UserModel> 
+    {
+        let this_method = "enable";
+        
+        if self.verbose 
+        {
+            debug!("{}::{} - Starting enable operation for id: {}", self.this_class, this_method, id);
+        }
+
+        match UserEntity::find_by_id(id).one(db).await 
+        {
+            Ok(Some(existing)) => 
+            {
+                let mut active: UserActiveModel = existing.into();
+                active.enable = sea_orm::Set(true);
+                
+                match active.update(db).await 
+                {
+                    Ok(updated_user) => 
+                    {
+                        let output = ModelOutput::success(updated_user, "User enabled successfully".to_string());
+                        if self.verbose 
+                        {
+                            info!("{}::{} - Success: User {} enabled", self.this_class, this_method, id);
+                        }
+                        if self.log 
+                        {
+                            info!("LOG: {}::{} - User {} enabled", self.this_class, this_method, id);
+                        }
+                        output
+                    }
+                    Err(e) => 
+                    {
+                        let error_msg = format!("Database error in {}::{}: {}", self.this_class, this_method, e);
+                        let output = ModelOutput::error(error_msg.clone());
+                        error!("{}::{} - Error: {}", self.this_class, this_method, error_msg);
+                        output
+                    }
+                }
+            }
+            Ok(None) => 
+            {
+                let output = ModelOutput::error("User not found".to_string());
+                if self.verbose 
+                {
+                    info!("{}::{} - User {} not found", self.this_class, this_method, id);
+                }
+                output
+            }
+            Err(e) => 
+            {
+                let error_msg = format!("Database error in {}::{}: {}", self.this_class, this_method, e);
+                let output = ModelOutput::error(error_msg.clone());
+                error!("{}::{} - Error: {}", self.this_class, this_method, error_msg);
+                if self.log 
+                {
+                    error!("LOG: {}::{} - Error: {}", self.this_class, this_method, error_msg);
+                }
                 output
             }
         }

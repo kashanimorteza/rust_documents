@@ -67,6 +67,13 @@ impl UserService {
         }
     }
 
+    //-------------------------- [Item]
+    pub async fn item(&self, db: &DatabaseConnection, id: i32) -> ModelOutput<UserModel> 
+    {
+        // Call logic layer
+        self.logic.item(db, id).await
+    }
+
     //-------------------------- [Update]
     pub async fn update(&self, db: &DatabaseConnection, item: UserModel) -> ModelOutput<UserModel> 
     {
@@ -98,6 +105,12 @@ impl UserService {
     pub async fn disable(&self, db: &DatabaseConnection, id: i32) -> ModelOutput<UserModel> 
     {
         self.logic.disable(db, id).await
+    }
+
+    //-------------------------- [Enable]
+    pub async fn enable(&self, db: &DatabaseConnection, id: i32) -> ModelOutput<UserModel> 
+    {
+        self.logic.enable(db, id).await
     }
 
     //-------------------------- [Dead]

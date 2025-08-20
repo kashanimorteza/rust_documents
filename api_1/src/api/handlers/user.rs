@@ -55,19 +55,8 @@ pub async fn get_user(
     Path(id): Path<i32>,
 ) -> Result<Json<ModelOutput<UserModel>>, StatusCode> {
     let service = UserService::new();
-    // For now, we'll use items with empty filters and then filter by id
-    // In a real implementation, you'd add a get_by_id method to the service
-    let mut filters = std::collections::HashMap::new();
-    filters.insert("id".to_string(), id.to_string());
-    let result = service.items(&state.db, filters).await;
-    
-    // Convert Vec<UserModel> result to single UserModel result
-    match result.data {
-        Some(users) if !users.is_empty() => {
-            Ok(Json(ModelOutput::success(users[0].clone(), "User found".to_string())))
-        }
-        _ => Ok(Json(ModelOutput::error("User not found".to_string())))
-    }
+    let result = service.item(&state.db, id).await;
+    Ok(Json(result))
 }
 
 pub async fn create_user(

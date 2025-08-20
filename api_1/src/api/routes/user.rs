@@ -75,6 +75,14 @@ async fn items(State(state): State<AppState>, Query(params): Query<HashMap<Strin
     Json(result)
 }
 
+//-------------------------- [Item]
+async fn item(State(state): State<AppState>, Path(id): Path<i32>,) -> Json<ModelOutput<UserModel>> 
+{
+    let service = UserService::new();
+    let result = service.item(&state.db, id).await;
+    Json(result)
+}
+
 //-------------------------- [Update]
 async fn update(State(state): State<AppState>, Json(payload): Json<UpdateUserRequest>, ) -> Json<ModelOutput<UserModel>> 
 {
@@ -113,6 +121,14 @@ async fn disable(State(state): State<AppState>, Path(id): Path<i32>,) -> Json<Mo
     Json(result)
 }
 
+//-------------------------- [Enable]
+async fn enable(State(state): State<AppState>, Path(id): Path<i32>,) -> Json<ModelOutput<UserModel>> 
+{
+    let service = UserService::new();
+    let result = service.enable(&state.db, id).await;
+    Json(result)
+}
+
 //-------------------------- [Dead]
 async fn dead(State(state): State<AppState>, Path(id): Path<i32>,) -> Json<ModelOutput<String>> 
 {
@@ -129,8 +145,10 @@ pub fn router() -> Router<AppState>
     Router::new()
         .route("/add", post(add))
         .route("/items", get(items))
+        .route("/{id}", get(item))
         .route("/update", put(update))
         .route("/delete/{id}", delete(delete_user))
         .route("/disable/{id}", get(disable))
+        .route("/enable/{id}", get(enable))
         .route("/dead/{id}", get(dead))
 }

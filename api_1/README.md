@@ -2,11 +2,9 @@
 
 A REST API built with Rust and Axum framework for user management operations.
 
-## 🚀 Getting Started
-
-### Prerequisites
-- Rust (latest stable version)
-- Cargo
+# API
+<!------------------------- Install -->
+Install
 ```bash
 cargo add dotenvy
 cargo add tokio --features full
@@ -16,6 +14,13 @@ cargo add serde
 cargo add serde_json
 cargo add thiserror
 ```
+
+
+## 🚀 Getting Started
+
+### Prerequisites
+- Rust (latest stable version)
+- Cargo
 
 ### Running the Server
 ```bash
@@ -203,7 +208,34 @@ curl -X GET http://localhost:3000/users/disable/1
 }
 ```
 
-### 7. Mark User as Dead
+### 7. Enable User
+**Endpoint:** `GET /users/enable/{id}`
+
+```bash
+curl -X GET http://localhost:3000/users/enable/1
+```
+
+**Response:**
+```json
+{
+  "success": true,
+  "message": "User enabled successfully",
+  "data": {
+    "id": 1,
+    "name": "John Doe",
+    "username": "johndoe",
+    "password": "secret",
+    "key": "api-key-1",
+    "email": "john@example.com",
+    "phone": "+123456789",
+    "tg_id": "tg-123",
+    "enable": true
+  },
+  "error": null
+}
+```
+
+### 8. Mark User as Dead
 **Endpoint:** `GET /users/dead/{id}`
 
 ```bash
