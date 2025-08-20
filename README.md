@@ -301,9 +301,6 @@ Compound
 
 
 
-
-
-
 <!--------------------------------------------------------------------------------- OOP -->
 <br><br>
 
@@ -312,36 +309,6 @@ Compound
     Encapsulation
     Inheritance
     Polymorphism
-
-
-
-<!--------------------------------------------------------------------------------- ORM -->
-<br><br>
-
-## ORM
-
-
-
-<!--------------------------------------------------------------------------------- API -->
-<br><br>
-
-## API
-
-[axum]
-
-
-
-<!--------------------------------------------------------------------------------- Pub/Sub -->
-<br><br>
-
-## Pub/Sub
-
-
-
-<!--------------------------------------------------------------------------------- Test -->
-<br><br>
-
-## Test
 
 
 
@@ -365,6 +332,19 @@ Tower
 
 
 
+<!--------------------------------------------------------------------------------- Extra -->
+<br><br>
+
+## Extra
+
+ORM : [seaorm]
+
+API : [axum]
+
+Pub/Sub : [nats]
+
+
+
 <!--------------------------------------------------------------------------------- Note -->
 <br><br>
 
@@ -373,4 +353,7 @@ Tower
     1 - Write a libreary and import to main source
 
 
+[seaorm]: https://github.com/kashanimorteza/rust_documents/tree/main/orm_seaorm.md
 [axum]: https://github.com/kashanimorteza/rust_documents/tree/main/api_axum.md
+[nats]: https://github.com/kashanimorteza/rust_documents/tree/main/pubsub_nats.md
+
