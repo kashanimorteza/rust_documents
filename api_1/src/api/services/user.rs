@@ -10,7 +10,7 @@
 use sea_orm::{DatabaseConnection, Set};
 use std::collections::HashMap;
 use crate::orm::models::user::{Model as UserModel, ActiveModel as UserActiveModel};
-use crate::orm::models::general::ModelOutput;
+use crate::logics::general::ModelOutput;
 use crate::orm::logics::user::UserORM;
 
 //--------------------------------------------------------------------------------- Service

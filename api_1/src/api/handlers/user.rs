@@ -12,7 +12,7 @@ use axum::{
 };
 use serde::Deserialize;
 use std::collections::HashMap;
-use crate::{orm::models::user::Model as UserModel, orm::models::general::ModelOutput, AppState};
+use crate::{orm::models::user::Model as UserModel, logics::general::ModelOutput, AppState};
 use crate::api::services::user::UserService;
 
 //--------------------------------------------------------------------------------- Request DTOs

@@ -12,7 +12,7 @@ use axum::routing::{get, post, put, delete};
 use axum::{Json, Router};
 use crate::AppState;
 use crate::orm::models::user::Model as UserModel;
-use crate::orm::models::general::ModelOutput;
+use crate::logics::general::ModelOutput;
 use crate::api::services::user::UserService;
 
 //--------------------------------------------------------------------------------- DTOs
