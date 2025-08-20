@@ -14,6 +14,8 @@ pub use tower_http::{cors::CorsLayer, trace::TraceLayer};
 pub use tracing_subscriber::{layer::SubscriberExt, util::SubscriberInitExt};
 pub mod api;
 pub mod orm;
+pub mod logics;
+pub mod args;
 
 //--------------------------------------------------------------------------------- State Management
 #[derive(Clone)]
@@ -24,7 +26,7 @@ pub struct AppState
 
 //--------------------------------------------------------------------------------- Main
 #[tokio::main]
-async fn main() 
+async fn main() -> Result<(), Box<dyn std::error::Error>>
 {
     // Load environment variables
     dotenv().ok();
@@ -38,6 +40,12 @@ async fn main()
     // Database connection
     let database_url = std::env::var("DATABASE_URL").unwrap_or_else(|_| "sqlite::memory:".to_string());
     let db: DatabaseConnection = Database::connect(&database_url).await.expect("Failed to connect to database");
+
+    // Handle command-line arguments
+    if args::handle_arguments(&db).await? 
+    {
+        return Ok(()); // Exit if arguments were handled (like --add-users)
+    }
 
     // State management
     let state = AppState { db };
@@ -63,4 +71,6 @@ async fn main()
     // Server Start
     let listener = tokio::net::TcpListener::bind(addr).await.unwrap();
     axum::serve(listener, app).await.unwrap();
+    Ok(())
 }
+
