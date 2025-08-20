@@ -2,9 +2,14 @@
 
 A REST API built with Rust and Axum framework for user management operations.
 
-# API
-<!------------------------- Install -->
-Install
+
+## 🚀 Getting Started
+
+### Prerequisites
+- Rust (latest stable version)
+- Cargo
+
+### Install
 ```bash
 cargo add dotenvy
 cargo add tokio --features full
@@ -14,13 +19,6 @@ cargo add serde
 cargo add serde_json
 cargo add thiserror
 ```
-
-
-## 🚀 Getting Started
-
-### Prerequisites
-- Rust (latest stable version)
-- Cargo
 
 ### Running the Server
 ```bash
