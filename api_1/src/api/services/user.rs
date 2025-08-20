@@ -9,9 +9,9 @@
 //--------------------------------------------------------------------------------- Import
 use sea_orm::{DatabaseConnection, Set};
 use std::collections::HashMap;
-use crate::models::user::{Model as UserModel, ActiveModel as UserActiveModel};
-use crate::models::general::ModelOutput;
-use crate::orm::user::UserORM;
+use crate::orm::models::user::{Model as UserModel, ActiveModel as UserActiveModel};
+use crate::orm::models::general::ModelOutput;
+use crate::orm::logics::user::UserORM;
 
 //--------------------------------------------------------------------------------- Service
 pub struct UserService {
@@ -29,9 +29,11 @@ impl UserService {
     }
 
     //-------------------------- [Add]
-    pub async fn add(&self, db: &DatabaseConnection, item: UserModel) -> ModelOutput<UserModel> {
+    pub async fn add(&self, db: &DatabaseConnection, item: UserModel) -> ModelOutput<UserModel> 
+    {
         // Convert UserModel to ActiveModel (equivalent to item.dict() and del item['id'])
-        let active_user = UserActiveModel {
+        let active_user = UserActiveModel 
+        {
             id: Default::default(), // Auto-increment (equivalent to del item['id'])
             name: Set(item.name),
             username: Set(item.username),
@@ -48,23 +50,29 @@ impl UserService {
     }
 
     //-------------------------- [Items]
-    pub async fn items(&self, db: &DatabaseConnection, filters: HashMap<String, String>) -> ModelOutput<Vec<UserModel>> {
+    pub async fn items(&self, db: &DatabaseConnection, filters: HashMap<String, String>) -> ModelOutput<Vec<UserModel>> 
+    {
         let output = self.logic.items(db, filters).await;
         
         // Convert data to dictionary format (equivalent to Python's item.toDict())
-        if output.success {
+        if output.success 
+        {
             // In Rust, the serialization is handled by serde automatically
             // The models already have Serialize derive, so they convert to JSON properly
             output
-        } else {
+        } 
+        else 
+        {
             output
         }
     }
 
     //-------------------------- [Update]
-    pub async fn update(&self, db: &DatabaseConnection, item: UserModel) -> ModelOutput<UserModel> {
+    pub async fn update(&self, db: &DatabaseConnection, item: UserModel) -> ModelOutput<UserModel> 
+    {
         // Convert UserModel to ActiveModel (equivalent to model_db(**item.dict()))
-        let active_user = UserActiveModel {
+        let active_user = UserActiveModel 
+        {
             id: Set(item.id),
             name: Set(item.name),
             username: Set(item.username),
@@ -81,17 +89,20 @@ impl UserService {
     }
 
     //-------------------------- [Delete]
-    pub async fn delete(&self, db: &DatabaseConnection, id: i32) -> ModelOutput<String> {
+    pub async fn delete(&self, db: &DatabaseConnection, id: i32) -> ModelOutput<String> 
+    {
         self.logic.delete(db, id).await
     }
 
     //-------------------------- [Disable]
-    pub async fn disable(&self, db: &DatabaseConnection, id: i32) -> ModelOutput<UserModel> {
+    pub async fn disable(&self, db: &DatabaseConnection, id: i32) -> ModelOutput<UserModel> 
+    {
         self.logic.disable(db, id).await
     }
 
     //-------------------------- [Dead]
-    pub async fn dead(&self, db: &DatabaseConnection, id: i32) -> ModelOutput<String> {
+    pub async fn dead(&self, db: &DatabaseConnection, id: i32) -> ModelOutput<String> 
+    {
         self.logic.dead(db, id).await
     }
 }

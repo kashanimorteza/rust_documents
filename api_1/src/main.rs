@@ -13,7 +13,6 @@ pub use tower::ServiceBuilder;
 pub use tower_http::{cors::CorsLayer, trace::TraceLayer};
 pub use tracing_subscriber::{layer::SubscriberExt, util::SubscriberInitExt};
 pub mod api;
-pub mod models;
 pub mod orm;
 
 //--------------------------------------------------------------------------------- State Management

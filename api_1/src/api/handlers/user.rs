@@ -11,7 +11,7 @@ use axum::{
     Json,
 };
 use serde::Deserialize;
-use crate::{models::user::Model as UserModel, AppState};
+use crate::{orm::models::user::Model as UserModel, AppState};
 
 //--------------------------------------------------------------------------------- Request DTOs
 #[derive(Deserialize)]
@@ -69,7 +69,7 @@ pub async fn create_user(
     State(state): State<AppState>,
     Json(payload): Json<CreateUserRequest>,
 ) -> Result<Json<UserModel>, StatusCode> {
-    use crate::models::user::ActiveModel as UserActiveModel;
+    use crate::orm::models::user::ActiveModel as UserActiveModel;
     use sea_orm::Set;
 
     let active_user = UserActiveModel {
@@ -98,7 +98,7 @@ pub async fn update_user(
     Path(id): Path<i32>,
     Json(payload): Json<UpdateUserRequest>,
 ) -> Result<Json<UserModel>, StatusCode> {
-    use crate::models::user::{ActiveModel as UserActiveModel, Entity as UserEntity};
+    use crate::orm::models::user::{ActiveModel as UserActiveModel, Entity as UserEntity};
     use sea_orm::{ActiveValue::Set, ActiveModelTrait, EntityTrait};
 
     match UserEntity::find_by_id(id).one(&state.db).await {
