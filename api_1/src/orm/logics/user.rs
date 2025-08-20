@@ -9,7 +9,7 @@
 //--------------------------------------------------------------------------------- Import
 use std::collections::HashMap;
 use tracing::{info, error, debug};
-use sea_orm::{ActiveModelTrait, DbConn, DbErr, EntityTrait};
+use sea_orm::{ActiveModelTrait, DbConn, EntityTrait};
 use crate::orm::models::user::{ActiveModel as UserActiveModel, Entity as UserEntity, Model as UserModel};
 use crate::orm::models::general::ModelOutput;
 
@@ -280,6 +280,3 @@ impl UserORM
         self.delete(db, id).await
     }
 }
-
-
-
