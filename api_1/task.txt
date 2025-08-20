@@ -1,7 +1,244 @@
-structure of Axum are :
-Route | Handler | Extractors | Middlewares | State Management
+i have a structure on python and fastapi and i need for rust like this structure:
 
-my model exist on : src/models
-my logic exist on : src/logics
+this is a route of user on python and using fastapi:
+#--------------------------------------------------------------------------------- location
+# webapi/routes/user.py
 
-generate api with axum for all models and logics
+#--------------------------------------------------------------------------------- Description
+# This is route for user
+
+#--------------------------------------------------------------------------------- Import
+from fastapi import Request
+from fastapi import APIRouter
+from models.py.user import user as model
+from webapi.services.user import user as service
+from models.py.general import model_output
+
+#--------------------------------------------------------------------------------- route
+#-------------------------- [Variable]
+route = APIRouter()
+service = service()
+
+#-------------------------- [Add]
+@route.post("/add", description="add", response_model=model_output)
+def add(item: model) : 
+    return service.add(item=item)
+
+#-------------------------- [Items]
+@route.get("/items", description="items", response_model=model_output)
+def items(request: Request):
+    filters = dict(request.query_params)
+    return service.items(**filters)
+
+#-------------------------- [Update]
+@route.put("/update", description="update", response_model=model_output)
+def update(item: model) : 
+    return service.update(item=item)
+
+#-------------------------- [Delete]
+@route.delete("/delete/{id}", description="delete", response_model=model_output)
+def delete(id: int) : 
+    return service.delete(id=id)
+
+#-------------------------- [Disable]
+@route.get("/disable/{id}", description="disable", response_model=model_output)
+def disable(id:int) : 
+    return service.disable(id=id)
+
+#-------------------------- [Dead]
+@route.get("/dead/{id}", description="dead", response_model=model_output)
+def dead(id:int) : 
+    return service.dead(id=id)
+
+
+
+this is a service of user on python and using:
+#--------------------------------------------------------------------------------- location
+# webapi/services/user.py
+
+#--------------------------------------------------------------------------------- Description
+# This is service for user
+
+#--------------------------------------------------------------------------------- Import
+from models.db.user import user as model_db
+from models.py.user import user as model_py
+from logics.user import user as logic
+from models.py.general import model_output
+
+#--------------------------------------------------------------------------------- service
+class user:
+    #-------------------------- [Init]
+    def __init__(self) : 
+        self.logic = logic()
+
+    #-------------------------- [Add]
+    def add(self, item:model_py) -> model_output:
+        item = item.dict()
+        del item['id']
+        item = model_db(**item)
+        result = self.logic.add(item=item)
+        return result
+    
+    #-------------------------- [Items]
+    def items(self, **filters) -> model_output:
+        output = self.logic.items(**filters)
+        if output.status : 
+            data = []
+            for item in output.data : data.append(item.toDict())
+            output.data = data
+        return output
+    
+    #-------------------------- [Update]
+    def update(self, item:model_py) -> model_output:
+        return self.logic.update(item=model_db(**item.dict()))
+
+    #-------------------------- [Delete]
+    def delete(self, id:int) -> model_output:
+        return self.logic.delete(id=id)
+
+    #-------------------------- [Disable]
+    def disable(self, id:int) -> model_output:
+        return self.logic.disable(id=id)
+
+    #-------------------------- [Dead]
+    def dead(self, id:int) -> model_output:
+        return self.logic.dead(id=id)
+
+
+this is a logic of user:
+#--------------------------------------------------------------------------------- Location
+# logics/user.py
+
+#--------------------------------------------------------------------------------- Description
+# This is logic for user
+
+#--------------------------------------------------------------------------------- Import
+import inspect
+from libs.tools import Tools
+from libs.database import database 
+from models.db.user import user as model
+from models.py.general import model_output
+from const.debug import debug
+    
+#--------------------------------------------------------------------------------- Class
+class user:
+    #-------------------------- [Init]
+    def __init__(self, verbose: bool = False, log: bool = False):
+        self.this_class = self.__class__.__name__
+        self.modoule = "user"
+        self.verbose = verbose
+        self.log = log
+        self.tools = Tools()
+        self.data = database()
+
+    #-------------------------- [Add]
+    def add(self, item:model) -> model_output:
+        #--------------Description
+        # IN     : model
+        # OUT    : model_output
+        # Action : Add model to
+        try:
+            #--------------Debug
+            this_method = inspect.currentframe().f_code.co_name
+            verbose = debug.get(self.this_class, {}).get(this_method, {}).get('verbose', False)
+            log = debug.get(self.this_class, {}).get(this_method, {}).get('log', False)
+            log_model = debug.get(self.this_class, {}).get(this_method, {}).get('model', False)
+            output = model_output()
+            #--------------Action
+            output = self.data.add(model=model, item=item)
+        except Exception as e:  
+            #--------------Error
+            output.status = False
+            output.data = {"class":self.this_class, "method":this_method, "error": str(e)}
+            print(output)
+            self.tools.log("error",output)
+        #--------------Verbose
+        if verbose : print(output)
+        #--------------Log
+        if log : self.tools.log(log_model, output)
+        #--------------Output
+        return output
+
+    #--------------------------[Items]
+    def items(self, **filters) -> model_output:
+        #--------------Description
+        # IN     : 
+        # OUT    : model_output
+        # Action : Get models from database and return them
+        try:
+            #--------------Debug
+            this_method = inspect.currentframe().f_code.co_name
+            verbose = debug.get(self.this_class, {}).get(this_method, {}).get('verbose', False)
+            log = debug.get(self.this_class, {}).get(this_method, {}).get('log', False)
+            log_model = debug.get(self.this_class, {}).get(this_method, {}).get('model', False)
+            output = model_output()
+            #--------------Action
+            output = self.data.items(model=model, **filters)
+        except Exception as e:  
+            #--------------Error
+            output.status = False
+            output.data = {"class":self.this_class, "method":this_method, "error": str(e)}
+            print(output)
+            self.tools.log("error",output)
+        #--------------Verbose
+        if verbose : print(output)
+        #--------------Log
+        if log : self.tools.log(log_model, output)
+        #--------------Output
+        return output
+    
+    #--------------------------[Update]
+    def update(self, item:model) -> model_output:
+        #--------------Description
+        # IN     : model
+        # OUT    : model_output
+        # Action : Get model and update to database
+        try:
+            #--------------Debug
+            this_method = inspect.currentframe().f_code.co_name
+            verbose = debug.get(self.this_class, {}).get(this_method, {}).get('verbose', False)
+            log = debug.get(self.this_class, {}).get(this_method, {}).get('log', False)
+            log_model = debug.get(self.this_class, {}).get(this_method, {}).get('model', False)
+            output = model_output()
+            #--------------Action
+            output = self.data.update(model=model, item=item)
+        except Exception as e:  
+            #--------------Error
+            output.status = False
+            output.data = {"class":self.this_class, "method":this_method, "error": str(e)}
+            print(output)
+            self.tools.log("error",output)
+        #--------------Verbose
+        if verbose : print(output)
+        #--------------Log
+        if log : self.tools.log(log_model, output)
+        #--------------Output
+        return output
+
+    #--------------------------[Delete]
+    def delete(self, id:int) -> model_output:
+        #--------------Description
+        # IN     : id
+        # OUT    : model_output
+        # Action : delete model from database
+        try:
+            #--------------Debug
+            this_method = inspect.currentframe().f_code.co_name
+            verbose = debug.get(self.this_class, {}).get(this_method, {}).get('verbose', False)
+            log = debug.get(self.this_class, {}).get(this_method, {}).get('log', False)
+            log_model = debug.get(self.this_class, {}).get(this_method, {}).get('model', False)
+            output = model_output()
+            #--------------Action
+            output = self.data.delete(model=model, id=id)
+        except Exception as e:  
+            #--------------Error
+            output.status = False
+            output.data = {"class":self.this_class, "method":this_method, "error": str(e)}
+            print(output)
+            self.tools.log("error",output)
+        #--------------Verbose
+        if verbose : print(output)
+        #--------------Log
+        if log : self.tools.log(log_model, output)
+        #--------------Output
+        return output

@@ -5,16 +5,16 @@
 // Main Axum server with proper structure: Routes | Handlers | Extractors | Middlewares | State Management
 
 //--------------------------------------------------------------------------------- Import
-use axum::{middleware::from_fn, Router};
-use dotenvy::dotenv;
-use sea_orm::{Database, DatabaseConnection};
-use std::net::SocketAddr;
-use tower::ServiceBuilder;
-use tower_http::{cors::CorsLayer, trace::TraceLayer};
-use tracing_subscriber::{layer::SubscriberExt, util::SubscriberInitExt};
-mod api;
-mod models;
-mod orm;
+pub use axum::{middleware::from_fn, Router};
+pub use dotenvy::dotenv;
+pub use sea_orm::{Database, DatabaseConnection};
+pub use std::net::SocketAddr;
+pub use tower::ServiceBuilder;
+pub use tower_http::{cors::CorsLayer, trace::TraceLayer};
+pub use tracing_subscriber::{layer::SubscriberExt, util::SubscriberInitExt};
+pub mod api;
+pub mod models;
+pub mod orm;
 
 //--------------------------------------------------------------------------------- State Management
 #[derive(Clone)]
@@ -38,8 +38,7 @@ async fn main()
 
     // Database connection
     let database_url = std::env::var("DATABASE_URL").unwrap_or_else(|_| "sqlite::memory:".to_string());
-    
-    let db = Database::connect(&database_url).await.expect("Failed to connect to database");
+    let db: DatabaseConnection = Database::connect(&database_url).await.expect("Failed to connect to database");
 
     // State management
     let state = AppState { db };
@@ -58,7 +57,7 @@ async fn main()
 
     // Server configuration
     let api_host = std::env::var("API_HOST").unwrap_or_else(|_| "127.0.0.1".to_string());
-    let api_port = std::env::var("API_PORT").unwrap_or_else(|_| "3001".to_string());
+    let api_port = std::env::var("API_PORT").unwrap_or_else(|_| "3000".to_string());
     let addr: SocketAddr = format!("{}:{}", api_host, api_port).parse().expect("invalid host:port");
     tracing::info!("🚀 Server listening on {}", addr);
     
